@@ -1,10 +1,10 @@
 export default function Education() {
   const education = [
     {
-      title: "부경대학교",
+      title: "국립 부경대학교",
       degree: "컴퓨터공학 학사 (편입)",
       period: "2022.03 - 2024.08",
-      description: "졸업 • 학점 3.4/4.5 • 컴퓨터공학과 학생회 활동",
+      description: "졸업 • 학점 3.4/4.5 • 개발 동아리 활동",
       icon: (
         <svg
           className="w-8 h-8 text-gray-400"
@@ -21,27 +21,27 @@ export default function Education() {
         </svg>
       ),
     },
-    // {
-    //   title: "경인여자대학교",
-    //   degree: "보건의료관리과",
-    //   period: "2020.03 ~ 2022.02",
-    //   description: "졸업 • 학점 4.08/4.5",
-    //   icon: (
-    //     <svg
-    //       className="w-8 h-8 text-gray-400"
-    //       fill="none"
-    //       viewBox="0 0 24 24"
-    //       stroke="currentColor"
-    //     >
-    //       <path
-    //         strokeLinecap="round"
-    //         strokeLinejoin="round"
-    //         strokeWidth={2}
-    //         d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-    //       />
-    //     </svg>
-    //   ),
-    // },
+    {
+      title: "부산외국어대학교",
+      degree: "컴퓨터공학과",
+      period: "2020.03 ~ 2022.02",
+      description: "졸업 • 학점 4.08/4.5 • 컴퓨터공학과 학생회 활동",
+      icon: (
+        <svg
+          className="w-8 h-8 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+          />
+        </svg>
+      ),
+    },
   ];
 
   return (

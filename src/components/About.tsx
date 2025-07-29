@@ -31,8 +31,9 @@ export default function About() {
                 </svg>
               </div>
               <p className="text-lg text-gray-800">
-                문제를 끝까지 파고들어{" "}
-                <span className="font-medium">해결하려는 끈기</span>가 있습니다.
+                문제를 깊이 있게 분석하고{" "}
+                <span className="font-medium">끝까지 해결하려는 태도</span>를
+                가지고 있습니다.
               </p>
             </div>
 
@@ -53,9 +54,9 @@ export default function About() {
                 </svg>
               </div>
               <p className="text-lg text-gray-800">
-                과정과 배움을 꼼꼼히{" "}
-                <span className="font-medium">기록하며 성장</span>하는 자세를
-                가지고 있습니다.
+                작은 경험도 놓치지 않고{" "}
+                <span className="font-medium">기록하며, 성장의 발판</span>으로
+                삼습니다.
               </p>
             </div>
 
@@ -76,9 +77,9 @@ export default function About() {
                 </svg>
               </div>
               <p className="text-lg text-gray-800">
-                사용자 중심의 서비스와{" "}
-                <span className="font-medium">확장 가능한 시스템</span>을 위해
-                지속적으로 성장합니다.
+                더 나은 사용자 경험과{" "}
+                <span className="font-medium">시스템 확장을 고려</span>하며,
+                꾸준히 기술을 넓혀갑니다.
               </p>
             </div>
           </div>
