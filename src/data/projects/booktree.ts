@@ -10,7 +10,7 @@ export const booktree: Project = {
         나만의 블로그를 통해 독서의 즐거움을 더 풍부하게 경험할 수 있으며, OAuth2 기반 소셜 로그인으로 간편하게 시작할 수 있습니다.
         독서 기록을 종류별로 정리하고 다시 꺼내보기 쉬운 공간을 목표로 개발된 플랫폼입니다.
       `,
-  role: "팀장, 백엔드 개발, 프론트엔드 개발",
+  role: "PM, 백엔드 개발, 프론트엔드 개발",
   github: "https://github.com/treejh/book-tree",
   liveDemo: "https://www.booktri.site",
   technologies: [

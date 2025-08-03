@@ -28,9 +28,9 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
   ];
 
   const socialLinks = [
-    { name: "GitHub", icon: <FaGithub />, url: "https://github.com/jiyuuuuun" },
-    { name: "Blog", icon: <FaBlog />, url: "https://jjiyuuuuun.tistory.com" },
-    { name: "Email", icon: <FaEnvelope />, url: "mailto:hwangjy001@naver.com" },
+    { name: "GitHub", icon: <FaGithub />, url: "https://github.com/treejh" },
+    { name: "Blog", icon: <FaBlog />, url: "https://dose-blog.tistory.com" },
+    { name: "Email", icon: <FaEnvelope />, url: "mailto:jjhyun8876@gmail.com" },
   ];
 
   return (

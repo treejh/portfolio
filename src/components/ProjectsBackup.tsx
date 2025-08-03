@@ -193,7 +193,7 @@ export default function Projects() {
         Juseyo는 자산과 재고를 효율적으로 관리하고, 요청 및 승인 프로세스를 자동화하는 재고 관리 플랫폼입니다.
         단순한 자산 등록/조회 기능을 넘어, 부서별 자산 분류, 체계적인 요청 흐름, 실시간 재고 현황 파악까지 하나의 시스템 안에서 통합 관리할 수 있도록 설계되었습니다.
       `,
-      role: "PM, 백엔드 개발, 프론트엔드 개발",
+      role: "개발 팀장, 백엔드 개발, 프론트엔드 개발",
       github: "https://github.com/treejh/JUSEYO",
       liveDemo: "https://www.app.jusey0.site/",
       technologies: [
