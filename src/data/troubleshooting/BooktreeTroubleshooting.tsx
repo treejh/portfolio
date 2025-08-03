@@ -60,6 +60,47 @@ export default function BooktreeTroubleshooting() {
             </ul>
           </div>
 
+          {/* 역할 분담 */}
+          <div className="bg-gray-50 border border-gray-200 p-4 rounded-md my-6">
+            <h5 className="text-md font-semibold text-gray-800 mb-3">
+              ✅ 역할 분담
+            </h5>
+            <ul className="text-sm text-gray-700 space-y-1 list-disc pl-5">
+              <li>
+                <strong>Nginx Proxy Manager</strong>: 도메인 기반 요청 수신, SSL
+                인증 처리 (Let's Encrypt)
+              </li>
+              <li>
+                <strong>HAProxy</strong>: 실시간 헬스 체크 및 Blue-Green 트래픽
+                전환 담당
+              </li>
+              <li>
+                <strong>app1_1 / app1_2</strong>: Spring Boot 기반 실제 서비스
+                애플리케이션 컨테이너
+              </li>
+            </ul>
+          </div>
+
+          {/* 전체 트래픽 구조 요약 */}
+          <div className="bg-white border border-gray-200 p-4 rounded-md my-6">
+            <h5 className="text-md font-semibold text-gray-800 mb-3">
+              📦 전체 구조 요약
+            </h5>
+            <pre className="bg-gray-100 p-3 rounded text-sm text-gray-700 overflow-x-auto">
+              {`[사용자 브라우저]
+       ↓
+[Nginx Proxy Manager (80, 443)]
+       ↓
+[HAProxy (8090)]
+       ↓
+[app1_1] or [app1_2]`}
+            </pre>
+            <p className="text-xs text-gray-500 mt-2">
+              외부 요청은 Nginx를 거쳐 HAProxy로 전달되며, 헬스 체크 기반으로
+              app1_1 또는 app1_2로 트래픽이 분기됩니다.
+            </p>
+          </div>
+
           {/* 컨테이너 두 개가 동시에 떠 있는 구조 이미지 */}
           <div className="flex flex-col items-center my-6">
             <img
@@ -108,8 +149,15 @@ export default function BooktreeTroubleshooting() {
               가용성을 크게 높일 수 있었습니다.
             </p>
           </div>
-
-          {/* 관련 시연 영상 */}
+          <div className="mt-4 p-3 bg-gray-100 rounded-lg">
+            <p className="text-sm text-gray-700">
+              <strong>📌 구조적 특징:</strong> 외부 요청은 Nginx Proxy Manager가
+              받아 내부 HAProxy로 전달되며, HAProxy는 /actuator/health 헬스
+              체크를 기반으로 Blue/Green 컨테이너 중 정상 상태의 인스턴스에만
+              트래픽을 분기합니다. 이 구조는 실제 운영 환경에서 안정적인 무중단
+              배포를 가능하게 합니다.
+            </p>
+          </div>
           {/* 관련 시연 영상 */}
           <div className="mt-4">
             <a
