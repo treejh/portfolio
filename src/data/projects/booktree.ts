@@ -11,7 +11,7 @@ export const booktree: Project = {
         독서 기록을 종류별로 정리하고 다시 꺼내보기 쉬운 공간을 목표로 개발된 플랫폼입니다.
       `,
   role: "PM, 백엔드 개발, 프론트엔드 개발",
-  github: "https://github.com/treejh/book-tree",
+  github: "https://github.com/treejh/booktree",
   liveDemo: "https://www.booktri.site",
   technologies: [
     "Java",
@@ -141,13 +141,13 @@ export const booktree: Project = {
       ],
     },
     {
-      title: "프로젝트 관리 및 인프라",
+      title: "IaC 기반 클라우드 인프라 및 배포 자동화",
       details: [
-        "팀장으로서 프로젝트 일정 관리 및 역할 분담",
-        "Git Flow 브랜치 전략 수립 및 커밋 컨벤션 정의",
-        "AWS EC2, S3 인프라 설정 및 배포 환경 구축",
-        "Docker를 활용한 컨테이너화 및 배포 자동화",
-        "GitHub Actions를 통한 CI/CD 파이프라인 구축",
+        "Terraform을 활용한 AWS 리소스 자동화 (IAM, EC2, RDS, S3 등 주요 서비스 관리)",
+        "AWS EC2 인스턴스에 Nginx 기반 백엔드 서버 배포 및 VPC, 보안 그룹 등 네트워크 구성",
+        "GitHub Actions 기반 백엔드 테스트 및 EC2 자동 배포 파이프라인 구축",
+        "프론트엔드는 Vercel을 활용한 자동 빌드 및 배포",
+        "Blue-Green 방식의 무중단 배포: Nginx 리버스 프록시로 두 포트 중 하나에서 새 버전 실행 후 헬스체크, 성공 시 트래픽을 새 버전으로 전환",
       ],
     },
   ],

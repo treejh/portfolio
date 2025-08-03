@@ -408,6 +408,7 @@ export default function Projects() {
                       >
                         <FaGithub className="mr-1 md:mr-2" /> GitHub
                       </a>
+
                       {project.id === "juseyo" && (
                         <>
                           <a
@@ -418,6 +419,15 @@ export default function Projects() {
                           >
                             <FaExternalLinkAlt className="mr-1 md:mr-2" /> 시연
                             영상
+                          </a>
+                          <a
+                            href="https://youtu.be/Qb9pxk_9C_Y"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center px-2 md:px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded-md text-blue-700 transition-colors text-sm"
+                          >
+                            <FaExternalLinkAlt className="mr-1 md:mr-2" /> 채팅
+                            시연
                           </a>
                           <a
                             href="https://youtu.be/FELFFBucDe0?si=jswpwxR4ln5Zg1qp"
@@ -438,6 +448,17 @@ export default function Projects() {
                           className="flex items-center justify-center px-2 md:px-4 py-2 bg-green-100 hover:bg-green-200 rounded-md text-green-700 transition-colors text-sm"
                         >
                           <FaExternalLinkAlt className="mr-1 md:mr-2" /> 발표
+                          영상
+                        </a>
+                      )}
+                      {project.id === "booktree" && (
+                        <a
+                          href="https://youtu.be/dzWKdEcuflM"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center px-2 md:px-4 py-2 bg-red-100 hover:bg-red-200 rounded-md text-red-700 transition-colors text-sm"
+                        >
+                          <FaExternalLinkAlt className="mr-1 md:mr-2" /> 시연
                           영상
                         </a>
                       )}

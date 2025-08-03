@@ -2,8 +2,8 @@ export default function BooktreeFeatures() {
   return (
     <div className="space-y-6">
       {/* 주요 포인트 섹션 */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
-        <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center">
+      <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border border-purple-200">
+        <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center">
           <span className="mr-2">🎯</span>
           주요 포인트
         </h3>

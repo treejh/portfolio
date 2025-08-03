@@ -155,6 +155,17 @@ export default function JuseyoTroubleshooting() {
                   Prometheus + Grafana + k6 환경 설정 방법
                 </a>
               </div>
+              <div className="text-sm text-gray-600">
+                🔗 WebSocket 연결 시 JWT 인증 문제 해결 블로그 글:&nbsp;
+                <a
+                  href="https://dose-blog.tistory.com/entry/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-stomp-%EC%B1%84%ED%8C%85-%EC%BF%A0%ED%82%A4-%ED%86%A0%ED%81%B0-JWT-%EC%9D%B8%EC%8B%9D-%EB%AC%B8%EC%A0%9C"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  WebSocket 연결 시 JWT(쿠키) 인증 문제
+                </a>
+              </div>
             </div>
           </div>
         </div>
