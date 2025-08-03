@@ -9,7 +9,7 @@ export default function JuseyoPerformance() {
             href="https://dose-blog.tistory.com/entry/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B3%A0%EB%8F%84%ED%99%94-%EC%B1%84%ED%8C%85-%EB%A9%94%EC%8B%9C%EC%A7%80-%EC%A1%B0%ED%9A%8C-Redis-%EC%BA%90%EC%8B%B1-%EB%B0%8F-%EB%9D%BD-%EB%8F%84%EC%9E%85"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-800 underline decoration-gray-400 hover:decoration-gray-600"
+            className="text-blue-600 hover:text-blue-800 underline decoration-blue-400 hover:decoration-blue-600 font-semibold"
           >
             블로그 글
           </a>

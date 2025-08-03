@@ -411,7 +411,7 @@ export default function Projects() {
                       {project.id === "juseyo" && (
                         <>
                           <a
-                            href="https://youtu.be/xFiNAreXASI?si=UQrH5aXcmsNUwpeV"
+                            href="https://youtu.be/_gMZ8JVIi6k"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center px-2 md:px-4 py-2 bg-red-100 hover:bg-red-200 rounded-md text-red-700 transition-colors text-sm"

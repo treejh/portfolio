@@ -3,7 +3,7 @@ export default function JuseyoTroubleshooting() {
     <div className="space-y-6">
       <div>
         <h3 className="text-xl font-bold text-gray-800 mb-4">
-          📡 공공데이터포털 API 인증 오류 해결
+          🚧 k6 성능 테스트 중 토큰 인증 문제 해결
         </h3>
 
         <div className="space-y-4">
@@ -13,34 +13,13 @@ export default function JuseyoTroubleshooting() {
               🧨 문제
             </h4>
             <p className="text-sm text-gray-700 mb-2">
-              Spring Boot 서버에서 공공데이터포털의 사업자 상태조회 API를
-              호출하려 했으나 다음과 같은 문제가 발생:
+              <b>k6</b>를 이용해 메시지 API 성능 테스트를 하던 중, 모든 요청이{" "}
+              <b>403 Forbidden</b>으로 응답됨
             </p>
             <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-              <li>
-                Postman에서는 정상 호출, 하지만 Spring Boot 애플리케이션에서는
-                400 Bad Request 응답 발생
-              </li>
+              <li>응답 실패율 100%</li>
+              <li>서버 로그 상, accessToken 없이 요청된 것으로 확인</li>
             </ul>
-
-            <p className="text-sm text-gray-700 mt-2">응답 메시지:</p>
-            <div className="bg-gray-50 p-3 rounded-lg mt-2">
-              <pre className="text-xs text-gray-800 overflow-x-auto">
-                {`{
-  "code": -4,
-  "msg": "등록되지 않은 인증키 입니다."
-}`}
-              </pre>
-            </div>
-
-            <p className="text-sm text-gray-700 mt-2">
-              이후엔 아래와 같은 예외도 발생:
-            </p>
-            <div className="bg-gray-50 p-3 rounded-lg mt-2">
-              <pre className="text-xs text-gray-800 overflow-x-auto">
-                {`java.lang.IllegalArgumentException: Invalid character '=' for QUERY_PARAM`}
-              </pre>
-            </div>
           </div>
 
           {/* 과정 */}
@@ -50,53 +29,43 @@ export default function JuseyoTroubleshooting() {
             </h4>
             <ol className="list-decimal pl-5 space-y-2 text-sm text-gray-700">
               <li>
-                <b>인증키를 application.yml에 URL 인코딩된 상태로 설정</b>
-                <div className="bg-gray-50 p-3 rounded-lg mt-2">
-                  <pre className="text-xs text-gray-800 overflow-x-auto">
-                    {`api:
-  nts:
-    service-key: RwvGMH8...%2FRVEJT%2BRj9r...%3D%3D`}
-                  </pre>
-                </div>
+                <b>accessToken은 Set-Cookie로 전달</b>
+                <br />
+                Spring Security는 accessToken을 쿠키에 저장 (Set-Cookie)
               </li>
               <li>
-                <b>URL 문자열 직접 생성</b>
-                <div className="bg-gray-50 p-3 rounded-lg mt-2">
-                  <pre className="text-xs text-gray-800 overflow-x-auto">
-                    {`public String getApiUrl() {
-    return "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=" + 인코딩된키;
-}`}
-                  </pre>
-                </div>
-                <p className="text-sm text-gray-700 mt-1">
-                  이 방식은 RestTemplate이 내부적으로 %를 다시 인코딩 → %2F →
-                  %252F
-                </p>
-                <p className="text-sm text-gray-700">
-                  → API 서버에서는 잘못된 인증키로 판단
-                </p>
+                <b>k6는 브라우저가 아니기 때문에 Set-Cookie 자동 저장 불가</b>
+                <br />
+                accessToken을 담지 못한 채 요청됨 → 인증 실패
               </li>
-              <li>
-                <b>UriComponentsBuilder 사용 시도</b>
-                <div className="bg-gray-50 p-3 rounded-lg mt-2">
-                  <pre className="text-xs text-gray-800 overflow-x-auto">
-                    {`UriComponents uri = UriComponentsBuilder
-    .fromHttpUrl("https://api.odcloud.kr/api/nts-businessman/v1/status")
-    .queryParam("serviceKey", "원본 키(RwvGM...)")  // 디코딩된 원본
-    .build(true)  // 인코딩 방지
-    .toUri();`}
-                  </pre>
-                </div>
-                <p className="text-sm text-gray-700 mt-1">
-                  하지만 키에 포함된 +, = 등의 특수 문자 때문에 Spring 내부에서
-                  URI 문법 오류 발생
-                </p>
-                <p className="text-sm text-gray-700">
-                  → IllegalArgumentException: Invalid character &apos;=&apos;
-                  for QUERY_PARAM
-                </p>
-              </li>
+              <li>인증된 요청을 위해 accessToken을 헤더에도 포함시켜야 함</li>
             </ol>
+          </div>
+
+          {/* 시각화(실패/성공) 이미지 영역 */}
+          <div className="flex flex-col md:flex-row gap-4 my-6">
+            <div className="flex-1 bg-white rounded-lg shadow p-3 flex flex-col items-center">
+              <img
+                src="/images/gra1.png"
+                alt="오류율 100% 실패 Grafana/k6 대시보드"
+                className="rounded mb-2 border border-gray-200 object-contain"
+                style={{ width: "100%", maxWidth: "380px", height: "200px" }}
+              />
+              <p className="text-xs text-gray-500 text-center">
+                인증 실패 시: 오류율 100% (Grafana)
+              </p>
+            </div>
+            <div className="flex-1 bg-white rounded-lg shadow p-3 flex flex-col items-center">
+              <img
+                src="/images/gra4.png"
+                alt="성공률 100% 정상 Grafana/k6 대시보드"
+                className="rounded mb-2 border border-gray-200 object-contain"
+                style={{ width: "100%", maxWidth: "380px", height: "200px" }}
+              />
+              <p className="text-xs text-gray-500 text-center">
+                인증 성공 후: 정상 요청 성공률 (k6)
+              </p>
+            </div>
           </div>
 
           {/* 해결 */}
@@ -104,34 +73,44 @@ export default function JuseyoTroubleshooting() {
             <h4 className="text-lg font-semibold text-gray-800 mb-2">
               ✅ 해결
             </h4>
-            <p className="text-sm text-gray-700 mb-3">
-              <b>🔧 해결 방법:</b> URLEncoder.encode()로 명시적 인코딩 →
-              URI.create() 직접 사용
+            <p className="text-sm text-gray-700 mb-2">
+              <b>🔧 해결 방법:</b> 테스트 환경에서 accessToken을{" "}
+              <code>Authorization</code> 헤더로도 내려주고, 추출 시 헤더를 우선
+              처리
             </p>
 
             <div className="bg-gray-50 p-4 rounded-lg">
               <pre className="text-xs text-gray-800 overflow-x-auto">
-                {`String encodedKey = URLEncoder.encode(ntsApiConfig.getServiceKey(), StandardCharsets.UTF_8);
-String fullUrl = ntsApiConfig.getBaseUrl() + "?serviceKey=" + encodedKey;
-URI uri = URI.create(fullUrl);`}
+                {`httpServletResponse.setHeader("Authorization", "Bearer " + accessToken);`}
               </pre>
             </div>
 
             <div className="bg-gray-50 p-4 rounded-lg mt-3">
               <pre className="text-xs text-gray-800 overflow-x-auto">
-                {`ResponseEntity<Map> response = restTemplate.exchange(
-    uri,
-    HttpMethod.POST,
-    request,  // HttpEntity
-    Map.class
-);`}
+                {`public String getAccessToken(HttpServletRequest request) {
+    String authorization = request.getHeader("Authorization");
+    if (authorization != null && authorization.startsWith("Bearer ")) {
+        return authorization.substring(7);
+    }
+
+    // fallback to cookie
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("accessToken".equals(cookie.getName())) {
+                return cookie.getValue();
+            }
+        }
+    }
+
+    return null;
+}`}
               </pre>
             </div>
 
             <p className="text-sm text-gray-700 mt-3">
-              URLEncoder.encode()로 정확한 쿼리 인코딩을 수행한 후<br />
-              Spring이 내부적으로 다시 인코딩하지 않도록 직접 URI를 생성하여
-              전달
+              <b>헤더 우선 인증 처리</b> 로 브라우저 외 테스트 환경(k6)에서도
+              accessToken 사용 가능
             </p>
           </div>
 
@@ -141,28 +120,42 @@ URI uri = URI.create(fullUrl);`}
               📈 결과
             </h4>
             <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-              <li>공공데이터포털 API 호출이 정상적으로 수행</li>
+              <li>k6 요청에서도 accessToken이 적용되어 인증 문제 해결</li>
+              <li>정상적인 성능 테스트 가능</li>
               <li>
-                인증키 오류(&quot;등록되지 않은 인증키 입니다.&quot;) 해결됨
-              </li>
-              <li>
-                이후에도 400 오류 또는 URI 인코딩 오류 없이 안정적으로 동작
+                Prometheus → Grafana로 실시간 응답 성공률 및 지표 시각화 가능
               </li>
             </ul>
-          </div>
-
-          <div className="p-3 bg-gray-50 rounded">
-            <p className="text-sm text-gray-700">
-              <strong>🔗 </strong>
-              <a
-                href="https://jjiyuuuuun.tistory.com/91"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 underline"
-              >
-                Tistory 블로그 글 참고 링크
-              </a>
+            <p className="text-sm text-gray-500 mt-2">
+              ⚠️ 주의: 이 방식은 보안상 안전하지 않기 때문에 테스트 용도를 위해
+              구현하였습니다.
             </p>
+
+            {/* 참고 링크 */}
+            <div className="mt-8 space-y-2">
+              <div className="text-sm text-gray-600">
+                🔗 관련 문제에 대한 블로그 글:&nbsp;
+                <a
+                  href="https://dose-blog.tistory.com/entry/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-k6-%EA%B7%B8%EB%9D%BC%ED%8C%8C%EB%82%98-%EC%98%A4%EB%A5%98%EC%9C%A8-100-%ED%95%B4%EA%B2%B0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  k6 + Grafana 오류율 100% 문제 해결 사례
+                </a>
+              </div>
+              <div className="text-sm text-gray-600">
+                🔗 환경 설정 가이드:&nbsp;
+                <a
+                  href="https://dose-blog.tistory.com/entry/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B3%A0%EB%8F%84%ED%99%94-k6-Prometheus-Grafana-%ED%86%B5%ED%95%A9-%EB%B6%80%ED%95%98-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Prometheus + Grafana + k6 환경 설정 방법
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
