@@ -3,248 +3,338 @@ export default function BooktreePerformance() {
     <div className="space-y-6">
       <div>
         <h3 className="text-xl font-bold text-gray-800 mb-4">
-          📈 BookTree 성능 최적화 사례
+          ❤️ 좋아요 누른 게시글 조회 성능 개선
         </h3>
+      </div>
 
-        <div className="space-y-6">
-          {/* AWS S3 이미지 최적화 */}
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-blue-800 mb-3">
-              ☁️ AWS S3 이미지 처리 최적화
-            </h4>
+      {/* 기존 구조 분석 */}
+      <div>
+        <h4 className="text-lg font-semibold text-gray-800 mb-2">
+          🔍 기존 구조 분석
+        </h4>
+        <div className="bg-gray-100 p-4 rounded mt-2">
+          <pre className="text-sm text-gray-700 overflow-x-auto">
+            {`@Query("SELECT lp.post FROM LikePost lp WHERE lp.user.id = :userId")
+Page<Post> findLikedPostsByUser(@Param("userId") Long userId, Pageable pageable);`}
+          </pre>
+        </div>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-2">
+          <li>단순 Post 추출 쿼리</li>
+          <li>
+            <span className="font-medium">Post.user</span>,{" "}
+            <span className="font-medium">Post.imageList</span> 등은 Lazy 로딩 →
+            N+1 문제 발생 가능성
+          </li>
+        </ul>
+      </div>
 
-            <div className="space-y-4">
-              <div>
-                <h5 className="text-md font-semibold text-gray-800 mb-2">
-                  🎯 최적화 목표
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                  <li>대용량 이미지 파일의 업로드/다운로드 속도 개선</li>
-                  <li>스토리지 비용 절감을 위한 이미지 용량 최적화</li>
-                  <li>사용자 경험 향상을 위한 로딩 시간 단축</li>
-                </ul>
-              </div>
+      {/* 개선 포인트 */}
+      <div>
+        <h4 className="text-lg font-semibold text-gray-800 mb-2">
+          🔧 개선 포인트
+        </h4>
+        <div className="mb-2">
+          <span className="font-bold text-green-700">
+            ✅ 1. N+1 방지: EntityGraph 적용
+          </span>
+        </div>
+        <div className="bg-gray-100 p-4 rounded mt-2">
+          <pre className="text-sm text-gray-700 overflow-x-auto">
+            {`@EntityGraph(attributePaths = {"post", "post.user", "post.imageList"})
+@Query("SELECT lp FROM LikePost lp WHERE lp.user.id = :userId")
+Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
+          </pre>
+        </div>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-2">
+          <li>Pageable과 Fetch Join은 충돌 위험 있으므로 EntityGraph로 대체</li>
+          <li>Post 엔티티의 연관 객체까지 한 번에 가져옴</li>
+        </ul>
+      </div>
 
-              <div>
-                <h5 className="text-md font-semibold text-gray-800 mb-2">
-                  🔧 구현 방법
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                  <li>클라이언트 사이드에서 이미지 압축 처리 적용</li>
-                  <li>
-                    적절한 이미지 포맷 자동 선택 (WebP 우선, JPEG/PNG 폴백)
-                  </li>
-                  <li>S3 버킷 정책 최적화로 CDN 효과 극대화</li>
-                  <li>이미지 업로드 전 크기 제한 및 유효성 검증</li>
-                  <li>Progressive JPEG 적용으로 점진적 로딩 구현</li>
-                </ul>
-              </div>
+      {/* 문제 발생 */}
+      <div>
+        <h4 className="text-lg font-semibold text-gray-800 mb-2">
+          🚨 문제 발생
+        </h4>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
+          <li>EntityGraph로 성능은 일부 향상되었지만, 병목 현상 여전</li>
+          <li>1000 VU 시 avg=901ms, p95=2.4s 응답 발생</li>
+          <li>고부하 상황에서 성능 저하 → 캐싱 필요성 대두</li>
+        </ul>
+      </div>
 
-              <div>
-                <h5 className="text-md font-semibold text-gray-800 mb-2">
-                  📊 성능 개선 결과
-                </h5>
-                <div className="overflow-x-auto">
-                  <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-                    <thead className="bg-gray-100">
-                      <tr>
-                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-300">
-                          지표
-                        </th>
-                        <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 border-b border-gray-300">
-                          최적화 전
-                        </th>
-                        <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 border-b border-gray-300">
-                          최적화 후
-                        </th>
-                        <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700 border-b border-gray-300">
-                          개선율
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-b border-gray-200">
-                        <td className="px-4 py-3 text-sm text-gray-700 font-medium">
-                          평균 이미지 로딩 시간
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-center">
-                          2.3초
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-center">
-                          0.8초
-                        </td>
-                        <td className="px-4 py-3 text-sm text-green-600 font-semibold text-center">
-                          ▼ 65%
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-200">
-                        <td className="px-4 py-3 text-sm text-gray-700 font-medium">
-                          이미지 파일 크기
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-center">
-                          평균 1.2MB
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-center">
-                          평균 350KB
-                        </td>
-                        <td className="px-4 py-3 text-sm text-green-600 font-semibold text-center">
-                          ▼ 71%
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-3 text-sm text-gray-700 font-medium">
-                          월간 스토리지 비용
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-center">
-                          $12
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-center">
-                          $4
-                        </td>
-                        <td className="px-4 py-3 text-sm text-green-600 font-semibold text-center">
-                          ▼ 67%
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+      {/* 상황 정리 */}
+      <div>
+        <h4 className="text-lg font-semibold text-gray-800 mb-2">
+          🧠 상황 정리: “사용자 본인이 좋아요 누른 게시글을 자기만 조회”
+        </h4>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border border-gray-200 rounded-lg text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-4 py-2 border-b border-gray-300 text-left text-gray-700">
+                  조건
+                </th>
+                <th className="px-4 py-2 border-b border-gray-300 text-center text-gray-700">
+                  분산 락 필요 여부
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700">
+                  여러 유저가 동일 캐시 key 사용
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  ✅ 필요
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700">
+                  캐시 미스 시 중복 DB 접근 우려
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  ✅ 필요
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700">
+                  각 유저가 자기 것만 조회
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  ❌ 필요 없음
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 text-gray-700">나만 쓰는 key</td>
+                <td className="px-4 py-2 text-center text-gray-700">
+                  ❌ 필요 없음
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Redisson 캐시 도입 */}
+      <div>
+        <h4 className="text-lg font-semibold text-gray-800 mb-2">
+          🚀 Redisson 캐시 도입
+        </h4>
+        <div className="bg-gray-100 p-4 rounded mt-2">
+          <pre className="text-sm text-gray-700 overflow-x-auto">
+            {`public Page<PostFollowingPageDto> getLikedPostsWithCache(Pageable pageable) {
+    Long userId = tokenService.getIdFromToken();
+    String cacheKey = String.format("likePost:user:%d:page:%d:size:%d",
+                                     userId, pageable.getPageNumber(), pageable.getPageSize());
+
+    RBucket<List<PostFollowingPageDto>> bucket = redissonClient.getBucket(cacheKey);
+    List<PostFollowingPageDto> dtoList;
+
+    if (bucket.isExists()) {
+        dtoList = bucket.get();
+    } else {
+        Page<LikePost> likePosts = likePostRepository.findByUserId(userId, pageable);
+        dtoList = likePosts.stream().map(PostFollowingPageDto::new).toList();
+        bucket.set(dtoList, 10, TimeUnit.MINUTES);
+    }
+
+    return new PageImpl<>(dtoList, pageable, dtoList.size());
+}`}
+          </pre>
+        </div>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-2">
+          <li>사용자 개인 key 기반 캐시 (userId + page + size)</li>
+          <li>10분 TTL 적용</li>
+          <li>락 미적용 → 낮은 지연 + 낮은 충돌 가능성</li>
+        </ul>
+      </div>
+
+      {/* 성능 개선 결과 */}
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <h3 className="text-xl font-bold text-gray-800 mb-4">
+          📊 성능 개선 결과 (k6 기준)
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border border-gray-200 rounded-lg text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-4 py-2 border-b border-gray-300 text-left text-gray-700">
+                  지표 항목
+                </th>
+                <th className="px-4 py-2 border-b border-gray-300 text-center text-gray-700">
+                  개선 전
+                </th>
+                <th className="px-4 py-2 border-b border-gray-300 text-center text-gray-700">
+                  개선 후
+                </th>
+                <th className="px-4 py-2 border-b border-gray-300 text-center text-gray-700">
+                  개선율
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
+                  평균 응답 시간
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  37.36초
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
+                  376ms
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
+                  ▼ 99.0% 단축
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
+                  P95 응답 시간
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  51.85초
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
+                  998.57ms
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
+                  ▼ 98.0% 단축
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
+                  성공 응답률
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  30.3% (248/818)
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
+                  100% (28,386/28,386)
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
+                  ▲ 230% ↑ 향상
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
+                  실패율
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  69.7%
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
+                  0%
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
+                  ▼ 100% 개선
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
+                  처리량 (TPS)
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  5.08 req/sec
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
+                  276.17 req/sec
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
+                  ▲ 약 53.3배 향상
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
+                  평균 요청 처리 시간
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  38.37초
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
+                  1.37초
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
+                  ▼ 96.4% 단축
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 text-gray-700 font-semibold">
+                  최대 응답 시간
+                </td>
+                <td className="px-4 py-2 text-center text-gray-700">59.99초</td>
+                <td className="px-4 py-2 text-center text-gray-700 font-bold">
+                  22.26초
+                </td>
+                <td className="px-4 py-2 text-center text-green-600 font-bold">
+                  ▼ 62.9% 단축
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {/* 개선 전/후 이미지 영역 */}
+        <div className="flex flex-col md:flex-row gap-4 mt-6">
+          {/* 개선 전 이미지 */}
+          <div className="flex-1 text-center">
+            <div className="mb-2 text-gray-700 font-semibold">개선 전</div>
+            {/* 이미지 삽입 위치 */}
+            <img
+              src="/images/beforeBookTree.png"
+              alt="개선 전"
+              className="mx-auto rounded shadow"
+            />
           </div>
-
-          {/* 검색 성능 최적화 */}
-          <div className="bg-green-50 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-green-800 mb-3">
-              🔍 검색 기능 성능 최적화
-            </h4>
-
-            <div className="space-y-4">
-              <div>
-                <h5 className="text-md font-semibold text-gray-800 mb-2">
-                  ⚡ 최적화 포인트
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                  <li>다중 조건 검색 시 쿼리 성능 개선</li>
-                  <li>검색 결과 페이징 처리 최적화</li>
-                  <li>자주 검색되는 키워드 캐싱 전략</li>
-                </ul>
-              </div>
-
-              <div>
-                <h5 className="text-md font-semibold text-gray-800 mb-2">
-                  🛠️ 적용 기술
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                  <li>MySQL 복합 인덱스 설계 및 적용</li>
-                  <li>LIKE 쿼리 최적화 및 Full-Text Search 활용</li>
-                  <li>검색 결과 캐싱을 위한 Redis 도입 검토</li>
-                  <li>페이징 처리 시 COUNT 쿼리 최적화</li>
-                </ul>
-              </div>
-
-              <div className="bg-white p-4 rounded-lg">
-                <h5 className="text-sm font-semibold text-gray-700 mb-2">
-                  💻 최적화된 검색 쿼리 예시
-                </h5>
-                <pre className="text-xs text-gray-800 bg-gray-50 p-3 rounded border overflow-x-auto">
-                  {`-- 복합 인덱스 활용 검색 쿼리
-SELECT p.*, u.username, c.name as category_name
-FROM posts p
-JOIN users u ON p.user_id = u.id
-JOIN categories c ON p.category_id = c.id
-WHERE (p.title LIKE ? OR p.author LIKE ? OR p.book_name LIKE ?)
-AND p.status = 'ACTIVE'
-ORDER BY p.view_count DESC, p.created_at DESC
-LIMIT ? OFFSET ?;
-
--- 인덱스: idx_posts_search(status, title, author, book_name, view_count)`}
-                </pre>
-              </div>
-            </div>
-          </div>
-
-          {/* OAuth2 인증 최적화 */}
-          <div className="bg-purple-50 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-purple-800 mb-3">
-              🔐 OAuth2 인증 프로세스 최적화
-            </h4>
-
-            <div className="space-y-4">
-              <div>
-                <h5 className="text-md font-semibold text-gray-800 mb-2">
-                  🎯 최적화 목표
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                  <li>소셜 로그인 응답 시간 단축</li>
-                  <li>토큰 관리 효율성 향상</li>
-                  <li>사용자 정보 동기화 성능 개선</li>
-                </ul>
-              </div>
-
-              <div>
-                <h5 className="text-md font-semibold text-gray-800 mb-2">
-                  🔧 구현 방법
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                  <li>JWT 토큰 페이로드 최적화로 크기 축소</li>
-                  <li>OAuth2 콜백 처리 로직 비동기화</li>
-                  <li>사용자 정보 캐싱 전략 적용</li>
-                  <li>토큰 갱신 프로세스 자동화</li>
-                </ul>
-              </div>
-
-              <div className="bg-white p-4 rounded-lg">
-                <h5 className="text-sm font-semibold text-gray-700 mb-2">
-                  ⚡ 성능 개선 결과
-                </h5>
-                <div className="text-sm text-gray-700">
-                  <p>
-                    • 소셜 로그인 완료 시간: <strong>3.2초 → 1.1초</strong> (66%
-                    개선)
-                  </p>
-                  <p>
-                    • 토큰 검증 속도: <strong>150ms → 45ms</strong> (70% 개선)
-                  </p>
-                  <p>
-                    • 사용자 정보 동기화: <strong>800ms → 200ms</strong> (75%
-                    개선)
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* 전체 성능 개선 요약 */}
-          <div className="bg-gray-100 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-gray-800 mb-3">
-              📈 전체 성능 개선 요약
-            </h4>
-            <div className="grid md:grid-cols-2 gap-4 text-sm">
-              <div>
-                <h5 className="font-semibold text-gray-700 mb-2">
-                  ✅ 핵심 개선 사항
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                  <li>AWS S3 이미지 최적화로 로딩 속도 65% 향상</li>
-                  <li>검색 쿼리 인덱싱으로 검색 속도 대폭 개선</li>
-                  <li>OAuth2 인증 프로세스 66% 단축</li>
-                  <li>전체적인 사용자 경험 품질 향상</li>
-                </ul>
-              </div>
-              <div>
-                <h5 className="font-semibold text-gray-700 mb-2">
-                  🎯 추가 최적화 계획
-                </h5>
-                <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                  <li>CDN 도입으로 글로벌 접근 속도 개선</li>
-                  <li>데이터베이스 커넥션 풀 최적화</li>
-                  <li>프론트엔드 번들 크기 최적화</li>
-                  <li>서버 사이드 캐싱 전략 고도화</li>
-                </ul>
-              </div>
-            </div>
+          {/* 개선 후 이미지 */}
+          <div className="flex-1 text-center">
+            <div className="mb-2 text-gray-700 font-semibold">개선 후</div>
+            {/* 이미지 삽입 위치 */}
+            <img
+              src="/images/afterBookTree.png"
+              alt="개선 후"
+              className="mx-auto rounded shadow"
+            />
           </div>
         </div>
+      </div>
+
+      {/* 결론 */}
+      <div className="bg-gray-50 p-4 rounded-lg">
+        <h3 className="text-lg font-semibold text-gray-800 mb-3">✅ 결론</h3>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
+          <li>
+            <span className="font-medium">EntityGraph</span>로 N+1 문제 제거
+          </li>
+          <li>
+            <span className="font-medium">Redisson 캐싱</span>으로 평균 응답
+            시간 <span className="text-green-700 font-semibold">84% 단축</span>
+          </li>
+          <li>
+            TPS(처리량){" "}
+            <span className="text-green-700 font-semibold">27% 향상</span> 및
+            오류율 <span className="text-green-700 font-semibold">0%</span> 유지
+          </li>
+          <li>
+            사용자 전용 데이터는 락 없는 캐시 전략으로 충분히 안전하며, 빠름
+          </li>
+        </ul>
+      </div>
+
+      {/* 실무 인사이트 */}
+      <div className="bg-gray-50 p-4 rounded-lg">
+        <h3 className="text-lg font-semibold text-gray-800 mb-3">
+          🧠 실무에서의 인사이트
+        </h3>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-gray-800">
+          <li>
+            단순한 API도 고부하 상황에서는 성능 병목의 핵심이 될 수 있습니다.
+          </li>
+          <li>
+            사소해 보이는 쿼리에도{" "}
+            <span className="font-semibold">캐싱 전략을 고려하는 습관</span>이
+            중요하다는 걸 실무에서 체감했습니다.
+          </li>
+        </ul>
       </div>
     </div>
   );
