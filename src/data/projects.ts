@@ -101,11 +101,6 @@ export const uiImages = {
       title: "게시글 상세보기",
     },
     {
-      src: "/images/북트리검색페이지.png",
-      alt: "BookTree 검색페이지",
-      title: "검색페이지",
-    },
-    {
       src: "/images/북트리카테고리페이지.png",
       alt: "BookTree 카테고리페이지",
       title: "카테고리페이지",

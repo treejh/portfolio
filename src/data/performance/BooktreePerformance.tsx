@@ -179,7 +179,7 @@ Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
                   평균 응답 시간
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
-                  37.36초
+                  37.36s
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
                   376ms
@@ -193,7 +193,7 @@ Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
                   P95 응답 시간
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
-                  51.85초
+                  51.85s
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
                   998.57ms
@@ -249,10 +249,10 @@ Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
                   평균 요청 처리 시간
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
-                  38.37초
+                  38.37s
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
-                  1.37초
+                  1.37s
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
                   ▼ 96.4% 단축
@@ -262,9 +262,9 @@ Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
                 <td className="px-4 py-2 text-gray-700 font-semibold">
                   최대 응답 시간
                 </td>
-                <td className="px-4 py-2 text-center text-gray-700">59.99초</td>
+                <td className="px-4 py-2 text-center text-gray-700">59.99s</td>
                 <td className="px-4 py-2 text-center text-gray-700 font-bold">
-                  22.26초
+                  22.26s
                 </td>
                 <td className="px-4 py-2 text-center text-green-600 font-bold">
                   ▼ 62.9% 단축

@@ -49,7 +49,7 @@ export default function JuseyoTroubleshooting() {
                 src="/images/gra1.png"
                 alt="오류율 100% 실패 Grafana/k6 대시보드"
                 className="rounded mb-2 border border-gray-200 object-contain"
-                style={{ width: "100%", maxWidth: "380px", height: "200px" }}
+                style={{ width: "100%", maxWidth: "480px", height: "260px" }}
               />
               <p className="text-xs text-gray-500 text-center">
                 인증 실패 시: 오류율 100% (Grafana)
@@ -60,7 +60,7 @@ export default function JuseyoTroubleshooting() {
                 src="/images/gra4.png"
                 alt="성공률 100% 정상 Grafana/k6 대시보드"
                 className="rounded mb-2 border border-gray-200 object-contain"
-                style={{ width: "100%", maxWidth: "380px", height: "200px" }}
+                style={{ width: "100%", maxWidth: "480px", height: "260px" }}
               />
               <p className="text-xs text-gray-500 text-center">
                 인증 성공 후: 정상 요청 성공률 (k6)

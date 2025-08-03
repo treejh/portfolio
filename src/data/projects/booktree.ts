@@ -3,7 +3,7 @@ import { Project } from "../../types/project";
 export const booktree: Project = {
   id: "booktree",
   title: "BookTree (독서 기록 공유 플랫폼)",
-  period: "2024.11.04 ~ 2024.12.06",
+  period: "2025.04.03 ~ 2025.05.01",
   description: "독서 입문자와 다독가 모두를 위한 독서 기록 및 공유 플랫폼",
   longDescription: `
         BookTree는 단순한 독서 기록을 넘어서, 책을 카테고리별로 정리하고 공유하며, 다시 쉽게 꺼내볼 수 있는 공간을 제공합니다.
