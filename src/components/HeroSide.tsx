@@ -34,12 +34,12 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
   ];
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full max-w-xs w-full mx-auto">
       <div className="flex flex-col items-center text-center gap-4">
         <div className="w-32 h-32 rounded-full border-4 border-gray-300 shadow-md overflow-hidden">
           <Image
             src="/images/profile.jpg"
-            alt="황지윤 프로필 사진"
+            alt="장지현 프로필 사진"
             width={128}
             height={128}
             className="object-cover w-full h-full"

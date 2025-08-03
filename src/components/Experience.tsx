@@ -24,6 +24,33 @@ export default function Experience() {
         </svg>
       ),
     },
+
+    {
+      title: "(주) 샤이닝라이언",
+      subtitle: "멋쟁이사자처럼 백엔드 인턴십 (1개월)",
+      period: "2025.07 ~ 2025.08",
+      description: [
+        "자사 프로젝트에 백엔드 인턴으로 참여하여 실무 협업 경험",
+        "Toss 결제 연동, 구매/정산 API 구현 및 관리자 대시보드 연동",
+        "프론트엔드와의 REST API 명세 협업 및 실시간 알림 로직 개발",
+        "전체 기능 기획에 따라 도메인 설계 => DB 설계 및 API 명세 작성",
+      ],
+      icon: (
+        <svg
+          className="w-8 h-8 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          />
+        </svg>
+      ),
+    },
   ];
 
   return (
