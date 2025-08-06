@@ -447,10 +447,46 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
               </table>
             </div>
           </div>
-
           {/* 모니터링 스크린샷 */}
           <div className="flex flex-col md:flex-row gap-4 mt-4">
             <div className="flex-1">
+              <div className="mb-2 text-gray-700 font-semibold text-center">
+                개선 전 (k6 모니터링)
+              </div>
+              {/* 실제 이미지 경로로 교체 */}
+              <img
+                src="/images/k6Before.png"
+                alt="k6 개선 전"
+                className="rounded shadow mx-auto"
+                style={{ width: "100%", maxWidth: "520px", height: "auto" }}
+              />
+              <div className="w-full h-[260px] bg-gray-200 rounded flex items-center justify-center text-gray-400 text-sm"></div>
+              <p className="text-xs text-gray-500 mt-2 text-center">
+                개선 전: 요청 실패율 36.5%, 응답 지연 심각
+              </p>
+            </div>
+            <div className="flex-1">
+              <div className="mb-2 text-gray-700 font-semibold text-center">
+                개선 후 (k6 모니터링)
+              </div>
+              {/* 실제 이미지 경로로 교체 */}
+              <img
+                src="/images/k6After.png"
+                alt="k6 개선 후"
+                className="rounded shadow mx-auto"
+                style={{ width: "100%", maxWidth: "520px", height: "auto" }}
+              />
+              <div className="w-full h-[260px] bg-gray-200 rounded flex items-center justify-center text-gray-400 text-sm"></div>
+              <p className="text-xs text-gray-500 mt-2 text-center">
+                개선 후: 100% 성공률, 처리량 +244% 향상
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 mt-4">
+            <div className="flex-1">
+              <div className="mb-2 text-gray-700 font-semibold text-center">
+                개선 전 (Grafana 모니터링)
+              </div>
               <img
                 src="/images/before.png"
                 alt="개선 전 Grafana 대시보드"
@@ -461,6 +497,9 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
               </p>
             </div>
             <div className="flex-1">
+              <div className="mb-2 text-gray-700 font-semibold text-center">
+                개선 후 (Grafana 모니터링)
+              </div>
               <img
                 src="/images/after.png"
                 alt="개선 후 Grafana 대시보드"
@@ -471,9 +510,20 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
               </p>
             </div>
           </div>
-          <div className="mt-2 text-xs text-gray-600">
+          {/* 모니터링 설명 */}
+          <div className="mt-4 text-xs text-gray-600 bg-white rounded p-4 shadow">
             <strong>k6 + Prometheus + Grafana</strong>로 실시간 부하 테스트 및
             모니터링 자동화
+            <br />
+          </div>
+          <div className="mt-4 text-xs text-gray-600 bg-white rounded p-4 shadow">
+            <span className="font-semibold text-gray-600">
+              Grafana는 Prometheus가 15초 단위로 수집한 데이터의{" "}
+              <strong>일시적인 분포</strong>를 보여주기 때문에
+              <br />
+              p95, rate() 같은 함수를 이용하여 실시간 트렌드 확인용으로
+              활용하고, 최종 성능 평가는 k6 결과를 기준으로 하였습니다.
+            </span>
           </div>
         </div>
       </div>
