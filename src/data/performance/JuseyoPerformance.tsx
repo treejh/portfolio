@@ -65,8 +65,8 @@ export default function JuseyoPerformance() {
                 </li>
                 <li>빈 메시지 응답도 매번 DB 접근 → 불필요한 쿼리 낭비</li>
                 <li>
-                  동시 요청 시 중복된 DB 조회가 병렬로 발생 → Cache
-                  Stampede(캐시 스탬피드) 및 성능 저하
+                  동시 요청 시 중복된 DB 조회가 병렬로 발생 → Race Condition 및
+                  성능 저하
                 </li>
                 <li>전체 응답 성공률 및 속도 모두 불안정</li>
               </ul>
@@ -144,7 +144,8 @@ public Page<ChatMessage> getChatMessage(Long roomId, Pageable pageable) {
             <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-2">
               <li>매 요청마다 직접 DB 접근 → 트래픽 증가 시 병목</li>
               <li>
-                캐시 TTL이 만료되면 다수 요청이 동시에 DB 접근 → Race Condition
+                캐시 TTL이 만료되면 다수 요청이 동시에 DB 접근 → Cache
+                Stampede(캐시 스탬피드)
               </li>
               <li>락 처리 없이 동시에 요청 → 중복 연산, 응답 실패율 증가</li>
             </ul>
