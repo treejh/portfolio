@@ -65,8 +65,7 @@ export default function JuseyoPerformance() {
                 </li>
                 <li>빈 메시지 응답도 매번 DB 접근 → 불필요한 쿼리 낭비</li>
                 <li>
-                  동시 요청 시 중복된 DB 조회가 병렬로 발생 → Race Condition 및
-                  성능 저하
+                  동시 요청으로 인한 병목 현상 및 중복 DB 조회로 성능 저하 발생
                 </li>
                 <li>전체 응답 성공률 및 속도 모두 불안정</li>
               </ul>
