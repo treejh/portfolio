@@ -243,7 +243,9 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
             <li>
               TTL 만료 순간에 캐시가 없으므로 모든 요청이 MISS 상태로 진입
             </li>
-            <li>락 없이 처리하면 Race Condition 발생 → 실패율 증가</li>
+            <li>
+              락 없이 처리하면 캐시 스탬피드(Cache Stampede) 발생 → 실패율 증가
+            </li>
           </ul>
         </div>
 
