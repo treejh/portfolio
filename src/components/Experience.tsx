@@ -3,7 +3,7 @@ export default function Experience() {
     {
       title: "UMC - 대학생 개발 연합 동아리 University MakeUs Challenge",
       subtitle: "MOT - 단체 투숙객 숙소 예약 플랫폼",
-      period: "2024.03 ~ 2023.09",
+      period: "2024.03 ~ 2024.09",
       description: [
         "Java, Spring, HTTP 등 백엔드 전반에 대한 실무 지식 학습",
         "단체 투숙 행사(MT, OT) 예약을 위한 숙소·패키지 예약 플랫폼 구현",
@@ -16,6 +16,31 @@ export default function Experience() {
         >
           프로젝트 상세 설명 보기
         </a>,
+      ],
+      icon: (
+        <svg
+          className="w-8 h-8 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "GDSC 부경대 - Google Developer Student Clubs",
+      subtitle: "네트워크 지식 공유 및 컴퓨터 관련 글쓰기 스터디",
+      period: "2023.09 ~ 2024.03",
+      description: [
+        "네트워크 관련 주제로 스터디 진행, 기초부터 심화까지 체계적으로 학습",
+        "컴퓨터 관련 글쓰기 모임 ‘글또’ 활동 참여, 기술 블로그 작성 및 공유",
+        "동아리 내 다양한 세미나와 워크숍 참여를 통한 실무 역량 강화",
       ],
       icon: (
         <svg
