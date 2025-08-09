@@ -1,21 +1,13 @@
 export default function Experience() {
   const experiences = [
     {
-      title: "UMC - 대학생 개발 연합 동아리 University MakeUs Challenge",
-      subtitle: "MOT - 단체 투숙객 숙소 예약 플랫폼",
-      period: "2024.03 ~ 2024.09",
+      title: "GDSC 부경대 - Google Developer Student Clubs",
+      subtitle: "네트워크 지식 공유 및 컴퓨터 관련 글쓰기 스터디",
+      period: "2023.09 ~ 2024.03",
       description: [
-        "Java, Spring, HTTP 등 백엔드 전반에 대한 실무 지식 학습",
-        "단체 투숙 행사(MT, OT) 예약을 위한 숙소·패키지 예약 플랫폼 구현",
-        "패키지·후기 CRUD, 호텔명 중복 확인 API 구현 및 AWS 환경 구성(EC2, RDS, S3)",
-        <a
-          href="https://deserted-thought-336.notion.site/a963dc701ffa43ffb418e0d2a1b8829d"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-blue-500 underline hover:text-blue-700"
-        >
-          프로젝트 상세 설명 보기
-        </a>,
+        "네트워크 관련 주제로 스터디 진행, 기초부터 심화까지 체계적으로 학습",
+        "컴퓨터 관련 글쓰기 모임 ‘글또’ 활동 참여, 기술 블로그 작성 및 공유",
+        "동아리 내 다양한 세미나와 워크숍 참여를 통한 실무 역량 강화",
       ],
       icon: (
         <svg
@@ -34,13 +26,21 @@ export default function Experience() {
       ),
     },
     {
-      title: "GDSC 부경대 - Google Developer Student Clubs",
-      subtitle: "네트워크 지식 공유 및 컴퓨터 관련 글쓰기 스터디",
-      period: "2023.09 ~ 2024.03",
+      title: "UMC - 대학생 개발 연합 동아리 University MakeUs Challenge",
+      subtitle: "MOT - 단체 투숙객 숙소 예약 플랫폼",
+      period: "2024.03 ~ 2024.09",
       description: [
-        "네트워크 관련 주제로 스터디 진행, 기초부터 심화까지 체계적으로 학습",
-        "컴퓨터 관련 글쓰기 모임 ‘글또’ 활동 참여, 기술 블로그 작성 및 공유",
-        "동아리 내 다양한 세미나와 워크숍 참여를 통한 실무 역량 강화",
+        "Java, Spring, HTTP 등 백엔드 전반에 대한 실무 지식 학습",
+        "단체 투숙 행사(MT, OT) 예약을 위한 숙소·패키지 예약 플랫폼 구현",
+        "패키지·후기 CRUD, 호텔명 중복 확인 API 구현 및 AWS 환경 구성(EC2, RDS, S3)",
+        <a
+          href="https://deserted-thought-336.notion.site/a963dc701ffa43ffb418e0d2a1b8829d"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-blue-500 underline hover:text-blue-700"
+        >
+          프로젝트 상세 설명 보기
+        </a>,
       ],
       icon: (
         <svg
