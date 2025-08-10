@@ -28,7 +28,7 @@ export default function Experience() {
     {
       title: "UMC - 대학생 개발 연합 동아리 University MakeUs Challenge",
       subtitle: "MOT - 단체 투숙객 숙소 예약 플랫폼",
-      period: "2024.03 ~ 2024.09",
+      period: "2023.03 ~ 2023.09",
       description: [
         "Java, Spring, HTTP 등 백엔드 전반에 대한 실무 지식 학습",
         "단체 투숙 행사(MT, OT) 예약을 위한 숙소·패키지 예약 플랫폼 구현",
