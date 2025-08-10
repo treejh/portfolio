@@ -83,11 +83,12 @@ export default function Projects() {
       case "소개":
         return (
           <div className="space-y-6">
-            <div className="bg-blue-50 p-4 rounded mb-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-2">
+            <div className="bg-blue-50 p-6 rounded-xl border border-gray-200 mb-6">
+              <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                 💡 프로젝트 소개
               </h3>
-              <div className="whitespace-pre-line text-gray-700">
+              <div className="whitespace-pre-line text-gray-700 leading-relaxed">
                 {project.longDescription}
               </div>
             </div>
@@ -95,7 +96,7 @@ export default function Projects() {
             <div className="flex justify-end">
               <button
                 onClick={() => setSelectedTab(project.id, "UI")}
-                className="flex items-center px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors"
+                className="flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-lg transition-colors font-medium"
               >
                 <FaDesktop className="mr-2" />
                 UI 화면 보기
@@ -105,23 +106,29 @@ export default function Projects() {
         );
       case "팀 구성":
         return (
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <table className="min-w-full">
-              <thead>
-                <tr>
-                  <th className="text-left py-2 px-3 text-gray-700">이름</th>
-                  <th className="text-left py-2 px-3 text-gray-700">역할</th>
-                </tr>
-              </thead>
-              <tbody>
-                {project.team.map((member: TeamMember, i: number) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-gray-100" : ""}>
-                    <td className="py-2 px-3 text-gray-800">{member.name}</td>
-                    <td className="py-2 px-3 text-gray-600">{member.role}</td>
+          <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+              👥 팀 구성
+            </h3>
+            <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+              <table className="min-w-full">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="text-left py-3 px-4 text-gray-700 font-semibold">이름</th>
+                    <th className="text-left py-3 px-4 text-gray-700 font-semibold">역할</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {project.team.map((member: TeamMember, i: number) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                      <td className="py-3 px-4 text-gray-800 font-medium">{member.name}</td>
+                      <td className="py-3 px-4 text-gray-600">{member.role}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         );
       case "주요 기능":
@@ -140,46 +147,60 @@ export default function Projects() {
 
         // 다른 프로젝트는 기존 방식으로 표시
         return (
-          <ul className="list-disc pl-5 space-y-2">
-            {project.features.map((feature: string, i: number) => (
-              <li key={i} className="text-gray-700">
-                {feature}
-              </li>
-            ))}
-          </ul>
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
+            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+              🚀 주요 기능
+            </h3>
+            <ul className="space-y-3">
+              {project.features.map((feature: string, i: number) => (
+                <li key={i} className="text-gray-700 flex items-start">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
         );
       case "담당 역할":
         return (
-          <div className="space-y-4">
+          <div className="space-y-6">
             {project.myContributions.map((contrib: Contribution, i: number) => (
-              <div key={i} className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-md text-gray-800 mb-2">
+              <div key={i} className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <h3 className="font-semibold text-lg text-gray-800 mb-3 flex items-center">
+                  <span className={`w-2 h-2 rounded-full mr-3 ${
+                    contrib.title.includes("블로그 글") ? 'bg-green-500' : 'bg-blue-500'
+                  }`}></span>
                   {contrib.title.includes("블로그 글")
                     ? "배포 및 운영"
                     : contrib.title}
                 </h3>
                 {contrib.title.includes("블로그 글") && (
-                  <p className="text-gray-500 text-sm mb-3">
-                    → 관련 기술과 고민은{" "}
-                    <a
-                      href="https://jjiyuuuuun.tistory.com/93"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-800 underline decoration-gray-400 hover:decoration-gray-600"
-                    >
-                      블로그 글
-                    </a>
-                    에서 확인 가능합니다
-                  </p>
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                    <p className="text-gray-600 text-sm mb-3">
+                      → 관련 기술과 고민은{" "}
+                      <a
+                        href="https://jjiyuuuuun.tistory.com/93"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline decoration-blue-400 hover:decoration-blue-600 font-medium"
+                      >
+                        블로그 글
+                      </a>
+                      에서 확인 가능합니다
+                    </p>
+                  </div>
                 )}
-                <ul className="list-disc pl-5 space-y-1">
+                <ul className="space-y-2">
                   {contrib.details.map((detail: string, j: number) =>
                     detail.startsWith("  - ") ? (
-                      <div key={j} className="ml-4 text-sm text-gray-600">
-                        - {detail.replace("  - ", "")}
+                      <div key={j} className="ml-6 text-sm text-gray-600 flex items-start">
+                        <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        {detail.replace("  - ", "")}
                       </div>
                     ) : (
-                      <li key={j} className="text-gray-700">
+                      <li key={j} className="text-gray-700 flex items-start">
+                        <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         {detail}
                       </li>
                     )
@@ -235,15 +256,17 @@ export default function Projects() {
         );
       case "회고":
         return (
-          <div className="space-y-4">
+          <div className="space-y-6">
             {project.reflections.map((reflection: Reflection, i: number) => (
-              <div key={i} className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-md text-gray-800 mb-2">
+              <div key={i} className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
+                <h3 className="font-semibold text-lg text-gray-800 mb-4 flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                   {reflection.title}
                 </h3>
-                <ul className="list-disc pl-5 space-y-1">
+                <ul className="space-y-3">
                   {reflection.details.map((detail: string, j: number) => (
-                    <li key={j} className="text-gray-700">
+                    <li key={j} className="text-gray-700 flex items-start">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       {detail}
                     </li>
                   ))}
@@ -350,19 +373,27 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-8">
-      <div className="w-full">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">Projects</h2>
+    <section id="projects" className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Projects
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-600 mt-4">
+            다양한 프로젝트를 통해 성장한 개발 경험을 소개합니다
+          </p>
+        </div>
 
         <div className="space-y-8">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100 overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               {/* 프로젝트 헤더 */}
-              <div className="p-4 md:p-6 border-b border-gray-200">
-                <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
+              <div className="p-6 md:p-8 border-b border-blue-100">
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                   {/* 로고 섹션 - 왼쪽 배치 */}
                   <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto md:mx-0 flex-shrink-0">
                     <Image
@@ -383,30 +414,32 @@ export default function Projects() {
 
                   {/* 프로젝트 정보 */}
                   <div className="flex flex-col flex-grow">
-                    <div className="mb-4">
-                      <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-2">
+                    <div className="mb-6">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3">
                         {project.title}
                       </h3>
-                      <div className="flex items-center text-gray-600 mb-3">
+                      <div className="flex items-center text-blue-600 mb-4">
                         <FaCalendarAlt className="mr-2 text-sm" />
-                        <span className="text-sm">{project.period}</span>
+                        <span className="text-sm font-medium">{project.period}</span>
                       </div>
-                      <p className="text-sm md:text-base text-gray-600 mb-3">
+                      <p className="text-base md:text-lg text-gray-600 mb-4 leading-relaxed">
                         {project.description}
                       </p>
-                      <p className="text-xs md:text-sm text-gray-500">
-                        {project.role}
-                      </p>
+                      <div className="inline-block px-4 py-2 bg-blue-100 rounded-full">
+                        <span className="text-blue-800 font-semibold text-sm">
+                          {project.role}
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-1 md:gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 md:gap-3 mb-6">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center px-2 md:px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-gray-700 transition-colors text-sm"
+                        className="flex items-center justify-center px-4 md:px-5 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 transition-colors text-sm font-medium"
                       >
-                        <FaGithub className="mr-1 md:mr-2" /> GitHub
+                        <FaGithub className="mr-2" /> GitHub
                       </a>
 
                       {project.id === "juseyo" && (
@@ -415,28 +448,25 @@ export default function Projects() {
                             href="https://youtu.be/_gMZ8JVIi6k"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center px-2 md:px-4 py-2 bg-red-100 hover:bg-red-200 rounded-md text-red-700 transition-colors text-sm"
+                            className="flex items-center justify-center px-4 md:px-5 py-2 bg-red-100 hover:bg-red-200 rounded-lg text-red-700 transition-colors text-sm font-medium"
                           >
-                            <FaExternalLinkAlt className="mr-1 md:mr-2" /> 시연
-                            영상
+                            <FaExternalLinkAlt className="mr-2" /> 시연 영상
                           </a>
                           <a
                             href="https://youtu.be/Qb9pxk_9C_Y"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center px-2 md:px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded-md text-blue-700 transition-colors text-sm"
+                            className="flex items-center justify-center px-4 md:px-5 py-2 bg-blue-100 hover:bg-blue-200 rounded-lg text-blue-700 transition-colors text-sm font-medium"
                           >
-                            <FaExternalLinkAlt className="mr-1 md:mr-2" /> 채팅
-                            시연
+                            <FaExternalLinkAlt className="mr-2" /> 채팅 시연
                           </a>
                           <a
                             href="https://youtu.be/FELFFBucDe0?si=jswpwxR4ln5Zg1qp"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center px-2 md:px-4 py-2 bg-orange-100 hover:bg-orange-200 rounded-md text-orange-700 transition-colors text-sm"
+                            className="flex items-center justify-center px-4 md:px-5 py-2 bg-orange-100 hover:bg-orange-200 rounded-lg text-orange-700 transition-colors text-sm font-medium"
                           >
-                            <FaExternalLinkAlt className="mr-1 md:mr-2" /> 발표
-                            영상
+                            <FaExternalLinkAlt className="mr-2" /> 발표 영상
                           </a>
                         </>
                       )}
@@ -445,10 +475,9 @@ export default function Projects() {
                           href="https://youtu.be/fph2-jl0f7Q?si=U_PJyop3Et76h0rN"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center px-2 md:px-4 py-2 bg-green-100 hover:bg-green-200 rounded-md text-green-700 transition-colors text-sm"
+                          className="flex items-center justify-center px-4 md:px-5 py-2 bg-green-100 hover:bg-green-200 rounded-lg text-green-700 transition-colors text-sm font-medium"
                         >
-                          <FaExternalLinkAlt className="mr-1 md:mr-2" /> 발표
-                          영상
+                          <FaExternalLinkAlt className="mr-2" /> 발표 영상
                         </a>
                       )}
                       {project.id === "booktree" && (
@@ -456,23 +485,22 @@ export default function Projects() {
                           href="https://youtu.be/dzWKdEcuflM"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center px-2 md:px-4 py-2 bg-red-100 hover:bg-red-200 rounded-md text-red-700 transition-colors text-sm"
+                          className="flex items-center justify-center px-4 md:px-5 py-2 bg-red-100 hover:bg-red-200 rounded-lg text-red-700 transition-colors text-sm font-medium"
                         >
-                          <FaExternalLinkAlt className="mr-1 md:mr-2" /> 시연
-                          영상
+                          <FaExternalLinkAlt className="mr-2" /> 시연 영상
                         </a>
                       )}
                     </div>
 
-                    <div className="flex flex-wrap gap-1 md:gap-2">
-                      <span className="text-xs md:text-sm font-medium text-gray-700 mr-2 flex items-center">
-                        <FaCode className="mr-1" />
+                    <div className="flex flex-wrap gap-2 md:gap-3">
+                      <span className="text-sm font-medium text-gray-700 mr-3 flex items-center">
+                        <FaCode className="mr-2 text-blue-600" />
                         기술 스택:
                       </span>
                       {project.technologies.map((tech, techIdx) => (
                         <span
                           key={techIdx}
-                          className="px-2 md:px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-xs transition-colors"
+                          className="px-3 md:px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full text-sm transition-colors font-medium"
                         >
                           {tech}
                         </span>
@@ -483,14 +511,14 @@ export default function Projects() {
               </div>
 
               {/* 탭 내비게이션 */}
-              <div className="flex border-b border-gray-200 overflow-x-auto">
+              <div className="flex border-b border-blue-100 overflow-x-auto bg-blue-50/50">
                 {tabs.map((tab) => (
                   <button
                     key={tab}
-                    className={`px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm whitespace-nowrap font-medium flex items-center ${
+                    className={`px-4 md:px-6 py-3 md:py-4 text-sm whitespace-nowrap font-medium flex items-center transition-colors ${
                       selectedTab(project.id) === tab
-                        ? "text-blue-600 border-b-2 border-blue-600"
-                        : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
+                        ? "text-blue-600 border-b-2 border-blue-600 bg-white"
+                        : "text-gray-600 hover:text-blue-600 hover:bg-blue-100/50"
                     }`}
                     onClick={() => setSelectedTab(project.id, tab)}
                   >
@@ -504,7 +532,7 @@ export default function Projects() {
               </div>
 
               {/* 선택된 탭 내용 */}
-              <div className="p-4 md:p-6">{renderTabContent(project)}</div>
+              <div className="p-6 md:p-8">{renderTabContent(project)}</div>
             </div>
           ))}
         </div>
