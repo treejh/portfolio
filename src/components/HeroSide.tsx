@@ -36,7 +36,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
   return (
     <div className="flex flex-col h-full max-w-xs w-full mx-auto">
       <div className="flex flex-col items-center text-center gap-4">
-        <div className="w-32 h-32 rounded-full border-4 border-gray-300 shadow-md overflow-hidden">
+        <div className="w-32 h-32 rounded-full border-4 border-gray-300 shadow-md overflow-hidden bg-gradient-to-br from-blue-100 to-sky-100">
           <Image
             src="/images/profile.jpg"
             alt="장지현 프로필 사진"
@@ -47,9 +47,9 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
           />
         </div>
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold text-gray-800">장지현</h1>
-          <p className="text-base text-gray-600">꾸준함으로 성장중인</p>
-          <p className="text-base text-gray-600">백엔드 개발자 장지현입니다</p>
+          <h1 className="text-2xl font-bold text-white">장지현</h1>
+          <p className="text-base text-blue-100">꾸준함으로 성장중인</p>
+          <p className="text-base text-blue-100">백엔드 개발자 장지현입니다</p>
         </div>
 
         <div className="flex gap-3 mt-1">
@@ -59,7 +59,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center p-2.5 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
+              className="flex items-center justify-center p-2.5 bg-white/20 hover:bg-white/30 rounded-full text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm"
               aria-label={link.name}
               title={link.name}
             >
@@ -69,16 +69,16 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
         </div>
 
         <div className="flex flex-wrap gap-1.5 justify-center">
-          <span className="px-2.5 py-0.5 bg-gray-200 text-gray-700 rounded-full text-xs font-medium">
+          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
             Java
           </span>
-          <span className="px-2.5 py-0.5 bg-gray-200 text-gray-700 rounded-full text-xs font-medium">
+          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
             Spring
           </span>
-          <span className="px-2.5 py-0.5 bg-gray-200 text-gray-700 rounded-full text-xs font-medium">
+          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
             MySQL
           </span>
-          <span className="px-2.5 py-0.5 bg-gray-200 text-gray-700 rounded-full text-xs font-medium">
+          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
             Docker
           </span>
         </div>
@@ -93,14 +93,14 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
                 className={`flex items-center px-4 py-2.5 rounded-lg transition-all duration-200 
                 ${
                   activeSection === item.id
-                    ? "bg-gray-300 text-gray-800 font-medium shadow-sm"
-                    : "text-gray-600 hover:bg-gray-200"
+                    ? "bg-white/30 text-white font-medium shadow-md backdrop-blur-sm border border-white/20"
+                    : "text-blue-100 hover:bg-white/20 hover:text-white"
                 }`}
               >
                 <span className="mr-2.5 text-sm opacity-80">{item.icon}</span>
                 <span className="text-sm">{item.label}</span>
                 {activeSection === item.id && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white"></span>
                 )}
               </Link>
             </li>
@@ -108,8 +108,8 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
         </ul>
       </nav>
 
-      <div className="mt-auto pt-4 border-t border-gray-200 mx-4">
-        <p className="text-xs text-gray-500 mt-2 text-center">© 2025 장지현</p>
+      <div className="mt-auto pt-4 border-t border-white/20 mx-4">
+        <p className="text-xs text-blue-200 mt-2 text-center">© 2025 장지현</p>
       </div>
     </div>
   );

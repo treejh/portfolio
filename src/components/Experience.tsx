@@ -6,12 +6,12 @@ export default function Experience() {
       period: "2023.09 ~ 2024.03",
       description: [
         "네트워크 관련 주제로 스터디 진행, 기초부터 심화까지 체계적으로 학습",
-        "컴퓨터 관련 글쓰기 모임 ‘글또’ 활동 참여, 기술 블로그 작성 및 공유",
+        "컴퓨터 관련 글쓰기 모임 '글또' 활동 참여, 기술 블로그 작성 및 공유",
         "동아리 내 다양한 세미나와 워크숍 참여를 통한 실무 역량 강화",
       ],
       icon: (
         <svg
-          className="w-8 h-8 text-gray-400"
+          className="w-6 h-6 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -37,14 +37,14 @@ export default function Experience() {
           href="https://deserted-thought-336.notion.site/a963dc701ffa43ffb418e0d2a1b8829d"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-blue-500 underline hover:text-blue-700"
+          className="text-blue-600 underline hover:text-blue-800"
         >
           프로젝트 상세 설명 보기
         </a>,
       ],
       icon: (
         <svg
-          className="w-8 h-8 text-gray-400"
+          className="w-6 h-6 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -68,7 +68,7 @@ export default function Experience() {
       ],
       icon: (
         <svg
-          className="w-8 h-8 text-gray-400"
+          className="w-6 h-6 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -95,7 +95,7 @@ export default function Experience() {
       ],
       icon: (
         <svg
-          className="w-8 h-8 text-gray-400"
+          className="w-6 h-6 text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -112,33 +112,69 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-8">
-      <div className="w-full">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">
-          Experience & Activities
-        </h2>
-        <div className="grid grid-cols-1 gap-6">
+    <section id="experience" className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Experience & Activities
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto rounded-full"></div>
+          <p className="text-lg text-gray-600 mt-4">다양한 경험과 활동을 통해 성장한 과정을 소개합니다</p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8">
           {experiences.map((exp, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:shadow-md"
+            <div 
+              key={idx} 
+              className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">{exp.icon}</div>
-                <div className="flex-grow">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                    {exp.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2">{exp.subtitle}</p>
-                  <div className="flex flex-wrap gap-2 items-center mb-3">
-                    <span className="text-xs text-gray-500">{exp.period}</span>
-                  </div>
-                  <ul className="list-disc pl-5 text-base text-gray-600 space-y-1">
-                    {exp.description.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
+              <div className="flex items-start gap-6">
+                <div className={`p-3 rounded-xl flex-shrink-0 ${
+                  idx === 0 ? 'bg-gradient-to-r from-blue-500 to-blue-600' :
+                  idx === 1 ? 'bg-gradient-to-r from-indigo-500 to-purple-600' :
+                  idx === 2 ? 'bg-gradient-to-r from-cyan-500 to-blue-600' :
+                  'bg-gradient-to-r from-purple-500 to-pink-600'
+                }`}>
+                  {exp.icon}
                 </div>
+                
+                <div className="flex-grow">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                      {exp.title}
+                    </h3>
+                    <p className="text-gray-600 font-medium mb-3">{exp.subtitle}</p>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full">
+                      <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-sm text-blue-800 font-medium">{exp.period}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {exp.description.map((item, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
+                          idx === 0 ? 'bg-blue-500' :
+                          idx === 1 ? 'bg-indigo-500' :
+                          idx === 2 ? 'bg-cyan-500' :
+                          'bg-purple-500'
+                        }`}></div>
+                        <span className="text-gray-700 leading-relaxed">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-6 pt-4 border-t border-blue-100">
+                <p className="text-sm text-gray-500">
+                  {idx === 0 && "Google 개발자 커뮤니티 활동을 통한 네트워킹과 기술 공유"}
+                  {idx === 1 && "실무 프로젝트를 통한 백엔드 개발 경험과 AWS 활용"}
+                  {idx === 2 && "체계적인 백엔드 교육과 프로젝트 성과"}
+                  {idx === 3 && "실무 인턴십을 통한 협업 경험과 실전 개발"}
+                </p>
               </div>
             </div>
           ))}
