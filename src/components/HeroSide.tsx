@@ -36,20 +36,22 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
   return (
     <div className="flex flex-col h-full max-w-xs w-full mx-auto">
       <div className="flex flex-col items-center text-center gap-4">
-        <div className="w-32 h-32 rounded-full border-4 border-gray-300 shadow-md overflow-hidden bg-gradient-to-br from-blue-100 to-sky-100">
-          <Image
-            src="/images/profile.jpg"
-            alt="장지현 프로필 사진"
-            width={128}
-            height={128}
-            className="object-cover w-full h-full"
-            priority
-          />
-        </div>
+      <div className="w-32 h-32 rounded-full p-[4px] bg-gradient-to-b from-indigo-500 via-blue-500 to-blue-200 shadow-md">
+      <div className="w-full h-full rounded-full overflow-hidden bg-white">
+        <Image
+          src="/images/profile.jpg"
+          alt="장지현 프로필 사진"
+          width={128}
+          height={128}
+          className="object-cover w-full h-full"
+          priority
+        />
+      </div>
+    </div>
         <div className="space-y-1">
           <h1 className="text-2xl font-bold text-white">장지현</h1>
-          <p className="text-base text-blue-100">꾸준함으로 성장중인</p>
-          <p className="text-base text-blue-100">백엔드 개발자 장지현입니다</p>
+          <p className="text-base text-blue-700">꾸준함으로 성장중인</p>
+          <p className="text-base text-blue-700">백엔드 개발자 장지현입니다</p>
         </div>
 
         <div className="flex gap-3 mt-1">
@@ -93,8 +95,8 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
                 className={`flex items-center px-4 py-2.5 rounded-lg transition-all duration-200 
                 ${
                   activeSection === item.id
-                    ? "bg-white/30 text-white font-medium shadow-md backdrop-blur-sm border border-white/20"
-                    : "text-blue-100 hover:bg-white/20 hover:text-white"
+                    ? "bg-white/30 text-blue-700 font-medium shadow-md backdrop-blur-sm border border-white/20"
+                    : "text-white hover:bg-white/20 hover:text-white"
                 }`}
               >
                 <span className="mr-2.5 text-sm opacity-80">{item.icon}</span>
