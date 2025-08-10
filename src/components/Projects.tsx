@@ -85,7 +85,6 @@ export default function Projects() {
           <div className="space-y-6">
             <div className="bg-blue-50 p-6 rounded-xl border border-gray-200 mb-6">
               <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center">
-                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                 💡 프로젝트 소개
               </h3>
               <div className="whitespace-pre-line text-gray-700 leading-relaxed">
@@ -108,7 +107,6 @@ export default function Projects() {
         return (
           <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
             <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
-              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
               👥 팀 구성
             </h3>
             <div className="bg-white rounded-lg overflow-hidden shadow-sm">
@@ -168,9 +166,7 @@ export default function Projects() {
             {project.myContributions.map((contrib: Contribution, i: number) => (
               <div key={i} className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                 <h3 className="font-semibold text-lg text-gray-800 mb-3 flex items-center">
-                  <span className={`w-2 h-2 rounded-full mr-3 ${
-                    contrib.title.includes("블로그 글") ? 'bg-green-500' : 'bg-blue-500'
-                  }`}></span>
+                
                   {contrib.title.includes("블로그 글")
                     ? "배포 및 운영"
                     : contrib.title}
@@ -258,9 +254,8 @@ export default function Projects() {
         return (
           <div className="space-y-6">
             {project.reflections.map((reflection: Reflection, i: number) => (
-              <div key={i} className="bg-grey p-6 rounded-xl border border-grey-100">
+              <div key={i} className="bg-gray-50 p-6 rounded-xl border border-grey-100">
                 <h3 className="font-semibold text-lg text-gray-800 mb-4 flex items-center">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                   {reflection.title}
                 </h3>
                 <ul className="space-y-3">
