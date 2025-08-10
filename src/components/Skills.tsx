@@ -1,33 +1,42 @@
 export default function Skills() {
   const skills = {
-    "Backend": ["Java", "Spring", "MySQL", "Hibernate"],
-    "DevOps": ["Docker", "AWS", "Git"],
-    "Tools": ["IntelliJ", "VS Code", "Gradle", "Notion"]
+    Backend: ["Java", "Spring", "MySQL", "Hibernate"],
+    DevOps: ["Docker", "AWS", "Git", "Grafana", "Prometheus", "k6"],
+    Tools: ["IntelliJ", "VS Code", "Gradle", "Notion"],
   };
 
   return (
-    <section id="skills" className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <section
+      id="skills"
+      className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50"
+    >
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             Tech Stack
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto rounded-full"></div>
-          <p className="text-lg text-gray-600 mt-4">사용 가능한 기술 스택들을 소개합니다</p>
+          <p className="text-lg text-gray-600 mt-4">
+            사용 가능한 기술 스택들을 소개합니다
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {Object.entries(skills).map(([category, items], index) => (
-            <div 
-              key={category} 
-              className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:shadow-blue-200/50 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2"
+            <div
+              key={category}
+              className="group bg-white/80 backdrop-blur-sm p-7 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl hover:shadow-blue-200/50 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2"
             >
-              <div className="flex items-center mb-6">
-                <div className={`p-3 rounded-xl mr-4 ${
-                  index === 0 ? 'bg-gradient-to-r from-blue-500 to-blue-600' :
-                  index === 1 ? 'bg-gradient-to-r from-indigo-500 to-purple-600' :
-                  'bg-gradient-to-r from-cyan-500 to-blue-600'
-                }`}>
+              <div className="flex items-center mb-5">
+                <div
+                  className={`p-3 rounded-xl mr-4 ${
+                    index === 0
+                      ? "bg-gradient-to-r from-blue-500 to-blue-600"
+                      : index === 1
+                      ? "bg-gradient-to-r from-indigo-500 to-purple-600"
+                      : "bg-gradient-to-r from-cyan-500 to-blue-600"
+                  }`}
+                >
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -62,24 +71,24 @@ export default function Skills() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-800">{category}</h3>
               </div>
-              
-              <div className="space-y-3">
+
+              <div className="flex flex-wrap gap-2 md:gap-2">
                 {items.map((skill) => (
                   <span
                     key={skill}
-                    className={`inline-block px-4 py-3 rounded-xl text-sm font-semibold ${
-                      index === 0 
-                        ? 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800' :
-                      index === 1 
-                        ? 'bg-gradient-to-r from-indigo-100 to-purple-200 text-indigo-800' :
-                        'bg-gradient-to-r from-cyan-100 to-blue-200 text-cyan-800'
+                    className={`inline-block px-3 py-2 rounded-xl text-sm font-semibold  ${
+                      index === 0
+                        ? "bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800"
+                        : index === 1
+                        ? "bg-gradient-to-r from-indigo-100 to-purple-200 text-indigo-800"
+                        : "bg-gradient-to-r from-cyan-100 to-blue-200 text-cyan-800"
                     }`}
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-              
+
               <div className="mt-6 pt-4 border-t border-blue-100">
                 <p className="text-sm text-gray-500">
                   {index === 0 && "백엔드 개발에 필요한 핵심 기술들"}
@@ -93,4 +102,4 @@ export default function Skills() {
       </div>
     </section>
   );
-} 
+}
