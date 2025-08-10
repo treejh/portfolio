@@ -113,14 +113,23 @@ export default function Projects() {
               <table className="min-w-full">
                 <thead className="bg-gray-100">
                   <tr>
-                    <th className="text-left py-3 px-4 text-gray-700 font-semibold">이름</th>
-                    <th className="text-left py-3 px-4 text-gray-700 font-semibold">역할</th>
+                    <th className="text-left py-3 px-4 text-gray-700 font-semibold">
+                      이름
+                    </th>
+                    <th className="text-left py-3 px-4 text-gray-700 font-semibold">
+                      역할
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {project.team.map((member: TeamMember, i: number) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                      <td className="py-3 px-4 text-gray-800 font-medium">{member.name}</td>
+                    <tr
+                      key={i}
+                      className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                    >
+                      <td className="py-3 px-4 text-gray-800 font-medium">
+                        {member.name}
+                      </td>
                       <td className="py-3 px-4 text-gray-600">{member.role}</td>
                     </tr>
                   ))}
@@ -164,9 +173,11 @@ export default function Projects() {
         return (
           <div className="space-y-6">
             {project.myContributions.map((contrib: Contribution, i: number) => (
-              <div key={i} className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <div
+                key={i}
+                className="bg-gray-50 p-6 rounded-xl border border-gray-200"
+              >
                 <h3 className="font-semibold text-lg text-gray-800 mb-3 flex items-center">
-                
                   {contrib.title.includes("블로그 글")
                     ? "배포 및 운영"
                     : contrib.title}
@@ -190,7 +201,10 @@ export default function Projects() {
                 <ul className="space-y-2">
                   {contrib.details.map((detail: string, j: number) =>
                     detail.startsWith("  - ") ? (
-                      <div key={j} className="ml-6 text-sm text-gray-600 flex items-start">
+                      <div
+                        key={j}
+                        className="ml-6 text-sm text-gray-600 flex items-start"
+                      >
                         <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         {detail.replace("  - ", "")}
                       </div>
@@ -254,7 +268,10 @@ export default function Projects() {
         return (
           <div className="space-y-6">
             {project.reflections.map((reflection: Reflection, i: number) => (
-              <div key={i} className="bg-gray-50 p-6 rounded-xl border border-grey-100">
+              <div
+                key={i}
+                className="bg-gray-50 p-6 rounded-xl border border-grey-100"
+              >
                 <h3 className="font-semibold text-lg text-gray-800 mb-4 flex items-center">
                   {reflection.title}
                 </h3>
@@ -368,7 +385,10 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <section
+      id="projects"
+      className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50"
+    >
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -415,7 +435,9 @@ export default function Projects() {
                       </h3>
                       <div className="flex items-center text-blue-600 mb-4">
                         <FaCalendarAlt className="mr-2 text-sm" />
-                        <span className="text-sm font-medium">{project.period}</span>
+                        <span className="text-sm font-medium">
+                          {project.period}
+                        </span>
                       </div>
                       <p className="text-base md:text-lg text-gray-600 mb-4 leading-relaxed">
                         {project.description}
@@ -510,7 +532,7 @@ export default function Projects() {
                 {tabs.map((tab) => (
                   <button
                     key={tab}
-                    className={`px-4 md:px-6 py-3 md:py-4 text-sm whitespace-nowrap font-medium flex items-center transition-colors ${
+                    className={`px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm whitespace-nowrap font-medium flex items-center ${
                       selectedTab(project.id) === tab
                         ? "text-blue-600 border-b-2 border-blue-600 bg-white"
                         : "text-gray-600 hover:text-blue-600 hover:bg-blue-100/50"
