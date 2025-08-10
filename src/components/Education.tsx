@@ -59,7 +59,7 @@ export default function Education() {
           {education.map((edu, idx) => (
             <div 
               key={idx} 
-              className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white/80 backdrop-blur-sm p-5 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-center mb-6">
                 <div className={`p-3 rounded-xl mr-4 ${

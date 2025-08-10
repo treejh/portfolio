@@ -407,7 +407,7 @@ export default function Projects() {
               className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100 overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               {/* 프로젝트 헤더 */}
-              <div className="p-6 md:p-8 border-b border-blue-100">
+              <div className="p-6 md:p-6 border-b border-blue-100">
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                   {/* 로고 섹션 - 왼쪽 배치 */}
                   <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto md:mx-0 flex-shrink-0">
@@ -439,11 +439,11 @@ export default function Projects() {
                           {project.period}
                         </span>
                       </div>
-                      <p className="text-base md:text-lg text-gray-600 mb-4 leading-relaxed">
+                      <p className="text-base md:text-sm text-gray-600 mb-4 leading-relaxed">
                         {project.description}
                       </p>
-                      <div className="inline-block px-4 py-2 bg-blue-100 rounded-full">
-                        <span className="text-blue-800 font-semibold text-sm">
+                      <div>
+                        <span className="text-blue-800 text-sm">
                           {project.role}
                         </span>
                       </div>

@@ -127,7 +127,7 @@ export default function Experience() {
           {experiences.map((exp, idx) => (
             <div 
               key={idx} 
-              className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-start gap-6">
                 <div className={`p-3 rounded-xl flex-shrink-0 ${
