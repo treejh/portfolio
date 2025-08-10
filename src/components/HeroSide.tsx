@@ -88,7 +88,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
                 <span className="mr-2.5 text-sm opacity-80">{item.icon}</span>
                 <span className="text-sm">{item.label}</span>
                 {activeSection === item.id && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white"></span>
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-800"></span>
                 )}
               </Link>
             </li>
