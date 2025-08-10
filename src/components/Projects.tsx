@@ -258,7 +258,7 @@ export default function Projects() {
         return (
           <div className="space-y-6">
             {project.reflections.map((reflection: Reflection, i: number) => (
-              <div key={i} className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
+              <div key={i} className="bg-grey p-6 rounded-xl border border-grey-100">
                 <h3 className="font-semibold text-lg text-gray-800 mb-4 flex items-center">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                   {reflection.title}
@@ -500,7 +500,7 @@ export default function Projects() {
                       {project.technologies.map((tech, techIdx) => (
                         <span
                           key={techIdx}
-                          className="px-3 md:px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-full text-sm transition-colors font-medium"
+                          className="px-2 md:px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-xs transition-colors"
                         >
                           {tech}
                         </span>
