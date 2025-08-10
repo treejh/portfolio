@@ -36,7 +36,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
   return (
     <div className="flex flex-col h-full max-w-xs w-full mx-auto">
       <div className="flex flex-col items-center text-center gap-4">
-      <div className="w-32 h-32 rounded-full p-[4px] bg-gradient-to-b from-indigo-500 via-blue-100 to-blue-100 shadow-md">
+      <div className="w-32 h-32 rounded-full p-[4px] bg-gradient-to-b from-gray-100 via-gray-100 to-gray-100 shadow-md">
       <div className="w-full h-full rounded-full overflow-hidden bg-white">
         <Image
           src="/images/profile.jpg"
@@ -49,9 +49,9 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
       </div>
     </div>
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold text-white">장지현</h1>
-          <p className="text-base text-blue-700">꾸준함으로 성장중인</p>
-          <p className="text-base text-blue-700">백엔드 개발자 장지현입니다</p>
+          <h1 className="text-2xl font-bold text-gray-700">장지현</h1>
+          <p className="text-base text-gray-700">꾸준함으로 성장중인</p>
+          <p className="text-base text-gray-700">백엔드 개발자 장지현입니다</p>
         </div>
 
         <div className="flex gap-3 mt-1">
@@ -61,7 +61,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center p-2.5 bg-white/20 hover:bg-white/30 rounded-full text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm"
+              className="flex items-center justify-center p-2.5 bg-gray-200 hover:bg-white/30 rounded-full text-blue-900 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm"
               aria-label={link.name}
               title={link.name}
             >
@@ -70,20 +70,6 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-1.5 justify-center">
-          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
-            Java
-          </span>
-          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
-            Spring
-          </span>
-          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
-            MySQL
-          </span>
-          <span className="px-2.5 py-0.5 bg-blue-600 text-white rounded-full text-xs font-medium shadow-md">
-            Docker
-          </span>
-        </div>
       </div>
 
       <nav className="mt-8">
@@ -95,8 +81,8 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
                 className={`flex items-center px-4 py-2.5 rounded-lg transition-all duration-200 
                 ${
                   activeSection === item.id
-                    ? "bg-white/30 text-blue-700 font-medium shadow-md backdrop-blur-sm border border-white/20"
-                    : "text-white hover:bg-white/20 hover:text-white"
+                    ? "bg-white/30 text-blue-800 font-medium shadow-md backdrop-blur-sm border border-white/20"
+                    : "text-gray-700 hover:bg-white/20 hover:text-blue-800"
                 }`}
               >
                 <span className="mr-2.5 text-sm opacity-80">{item.icon}</span>
@@ -111,7 +97,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
       </nav>
 
       <div className="mt-auto pt-4 border-t border-white/20 mx-4">
-        <p className="text-xs text-blue-200 mt-2 text-center">© 2025 장지현</p>
+        <p className="text-xs text-blue-800 mt-2 text-center">© 2025 장지현</p>
       </div>
     </div>
   );
