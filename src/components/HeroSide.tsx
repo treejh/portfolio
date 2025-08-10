@@ -36,7 +36,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
   return (
     <div className="flex flex-col h-full max-w-xs w-full mx-auto">
       <div className="flex flex-col items-center text-center gap-4">
-      <div className="w-32 h-32 rounded-full p-[4px] bg-gradient-to-b from-indigo-500 via-blue-500 to-blue-200 shadow-md">
+      <div className="w-32 h-32 rounded-full p-[4px] bg-gradient-to-b from-indigo-500 via-blue-100 to-blue-100 shadow-md">
       <div className="w-full h-full rounded-full overflow-hidden bg-white">
         <Image
           src="/images/profile.jpg"
