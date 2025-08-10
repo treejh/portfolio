@@ -12,14 +12,13 @@ import HeroSide from "@/components/HeroSide";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about");
+  const [showNotice, setShowNotice] = useState(true); // ✅ 공지 배너 표시 여부
 
-  
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id]"));
 
-    // ✅ 현재 뷰포트 기준으로 즉시 한 번 계산(초기 렌더에서 zoom 없이도 반영되도록)
     const recalc = () => {
-      const viewportY = window.innerHeight * 0.3; // 화면 상단에서 30% 지점
+      const viewportY = window.innerHeight * 0.3;
       let current = activeSection;
       sections.forEach((s) => {
         const r = s.getBoundingClientRect();
@@ -42,17 +41,13 @@ export default function Home() {
         });
       },
       {
-        threshold: 0.1,                // 🔽 더 쉽게 트리거
-        rootMargin: "0px 0px -20% 0px" // 🔽 뷰포트 하단 20% 남기고 조기 발화
+        threshold: 0.1,
+        rootMargin: "0px 0px -20% 0px",
       }
     );
 
     sections.forEach((section) => observer.observe(section));
-
-    // ✅ 초기 1회 강제 계산 (브라우저별 초기 옵저버 미발화 대응)
     recalc();
-
-    // ✅ 리사이즈/회전 시 재계산 (줌/레이아웃 변화와 비슷한 효과)
     window.addEventListener("resize", recalc);
     window.addEventListener("orientationchange", recalc);
 
@@ -66,6 +61,28 @@ export default function Home() {
   return (
     // ✅ 사이드바 폭만큼 패딩으로 자리 확보 + 가로 스크롤 방지
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 md:pl-[430px] overflow-x-hidden">
+      {/* 🔔 공지 배너 */}
+      {showNotice && (
+        <div className="sticky top-0 z-20">
+          <div className="bg-blue-100 border-b border-blue-200 text-gray-900">
+            <div className="max-w-full px-4 py-2 md:py-2.5 flex items-center gap-2">
+              <span aria-hidden className="text-base md:text-lg">📢</span>
+              <p className="text-sm md:text-[15px] text-gray-700">
+                화면 비율을 <span className="font-semibold">90%</span>로 맞추시면 더 편하게 볼 수 있습니다.
+              </p>
+              <button
+                type="button"
+                aria-label="공지 닫기"
+                onClick={() => setShowNotice(false)}
+                className="ml-auto rounded-md px-2 py-1 text-gray-700/80 hover:bg-white"
+              >
+                닫기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 왼쪽 Hero(사이드) - 데스크탑 */}
       <aside className="hidden md:block fixed left-0 top-0 h-screen w-[430px] bg-gradient-to-b from-slate-100 to-gray-100 shadow-md z-10">
         <div className="flex flex-col h-full justify-between py-6 px-7 pt-16">
@@ -73,7 +90,7 @@ export default function Home() {
         </div>
       </aside>
 
-      {/* 콘텐츠 래퍼: ✅ 더 이상 ml 주지 않음 */}
+      {/* 콘텐츠 래퍼 */}
       <div className="flex flex-col">
         {/* 모바일에서는 HeroSide가 위에 */}
         <div className="md:hidden bg-gradient-to-b from-slate-800 via-blue-700 to-sky-300 shadow-sm px-6 py-10">
