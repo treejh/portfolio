@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
       {/* 왼쪽 Hero(사이드) - 데스크탑 */}
-      <aside className="hidden md:block fixed left-0 top-0 h-screen w-[430px] bg-gradient-to-b from-slate-200 to-gray-100 shadow-md z-10">
+      <aside className="hidden md:block fixed left-0 top-0 h-screen w-[430px] bg-gradient-to-b from-slate-100 to-gray-100 shadow-md z-10">
         <div className="flex flex-col h-full justify-between py-6 px-7 pt-16">
           <HeroSide activeSection={activeSection} />
         </div>
