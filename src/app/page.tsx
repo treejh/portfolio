@@ -15,7 +15,9 @@ export default function Home() {
   const [showNotice, setShowNotice] = useState(true); // ✅ 공지 배너 표시 여부
 
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id]"));
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("section[id]")
+    );
 
     const recalc = () => {
       const viewportY = window.innerHeight * 0.3;
@@ -66,9 +68,12 @@ export default function Home() {
         <div className="sticky top-0 z-20">
           <div className="bg-blue-100 border-b border-blue-200 text-gray-900">
             <div className="max-w-full px-4 py-2 md:py-2.5 flex items-center gap-2">
-              <span aria-hidden className="text-base md:text-lg">📢</span>
+              <span aria-hidden className="text-base md:text-lg">
+                📢
+              </span>
               <p className="text-sm md:text-[15px] text-gray-700">
-                화면 비율을 <span className="font-semibold">90%</span>로 맞추시면 더 편하게 볼 수 있습니다.
+                화면 비율을 <span className="font-semibold">90%</span>로
+                맞추시면 더 편하게 볼 수 있습니다.
               </p>
               <button
                 type="button"
@@ -98,25 +103,46 @@ export default function Home() {
         </div>
 
         <main className="flex-1 p-4 md:p-8 md:px-12 lg:px-16 space-y-6 max-w-full">
-          <section id="about" className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100">
+          <section
+            id="about"
+            className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100"
+          >
             <About />
           </section>
-          <section id="skills" className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100">
+          <section
+            id="skills"
+            className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100"
+          >
             <Skills />
           </section>
-          <section id="education" className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100">
+          <section
+            id="education"
+            className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100"
+          >
             <Education />
           </section>
-          <section id="experience" className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100">
+          <section
+            id="experience"
+            className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100"
+          >
             <Experience />
           </section>
-          <section id="certificates" className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100">
+          <section
+            id="certificates"
+            className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100"
+          >
             <Certificates />
           </section>
-          <section id="projects" className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100">
+          <section
+            id="projects"
+            className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100"
+          >
             <Projects />
           </section>
-          <section id="contact" className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100">
+          <section
+            id="contact"
+            className="bg-white rounded-lg shadow-sm p-8 transition-all duration-300 hover:shadow-md border border-gray-100"
+          >
             <Contact />
           </section>
         </main>

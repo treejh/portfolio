@@ -71,7 +71,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
         </div>
       </div>
 
-      <nav className="mt-8">
+      <nav className="mt-5 flex-1 overflow-y-auto">
         <ul className="space-y-1.5">
           {navItems.map((item) => (
             <li key={item.id}>
