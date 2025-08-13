@@ -36,18 +36,18 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
   return (
     <div className="flex flex-col h-full max-w-xs w-full mx-auto">
       <div className="flex flex-col items-center text-center gap-4">
-      <div className="w-32 h-32 rounded-full p-[4px] bg-gradient-to-b from-gray-100 via-gray-100 to-gray-100 shadow-md">
-      <div className="w-full h-full rounded-full overflow-hidden bg-white">
-        <Image
-          src="/images/profile.jpg"
-          alt="장지현 프로필 사진"
-          width={128}
-          height={128}
-          className="object-cover w-full h-full"
-          priority
-        />
-      </div>
-    </div>
+        <div className="w-32 h-32 rounded-full p-[4px] bg-gradient-to-b from-gray-100 via-gray-100 to-gray-100 shadow-md">
+          <div className="w-full h-full rounded-full overflow-hidden bg-white">
+            <Image
+              src="/images/profile.jpg"
+              alt="장지현 프로필 사진"
+              width={128}
+              height={128}
+              className="object-cover w-full h-full"
+              priority
+            />
+          </div>
+        </div>
         <div className="space-y-1">
           <h1 className="text-2xl font-bold text-gray-700">장지현</h1>
           <p className="text-base text-gray-700">꾸준함으로 성장중인</p>
@@ -69,7 +69,6 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
             </a>
           ))}
         </div>
-
       </div>
 
       <nav className="mt-8">
