@@ -1,6 +1,15 @@
 export default function Skills() {
   const skills = {
-    Backend: ["Java", "Spring", "Hibernate", "MySQL", "MariaDB", "PostgreSQL"],
+    Backend: [
+      "Java",
+      "Spring",
+      "Hibernate",
+      "Next.js",
+      "TypeScript",
+      "MySQL",
+      "MariaDB",
+      "PostgreSQL",
+    ],
     DevOps: [
       "Docker",
       "AWS",
@@ -96,7 +105,7 @@ export default function Skills() {
                         : "bg-cyan-100 text-cyan-700"
                     }`}
                   >
-                    {index === 0 && "Backend"}
+                    {index === 0 && "Skills"}
                     {index === 1 && "DevOps"}
                     {index === 2 && "Tools"}
                   </span>
@@ -116,7 +125,7 @@ export default function Skills() {
 
                 {/* Description */}
                 <p className="text-sm text-gray-500">
-                  {index === 0 && "백엔드 개발에 필요한 핵심 기술들"}
+                  {index === 0 && "개발에 필요한 핵심 기술들"}
                   {index === 1 && "개발 및 배포 환경 구축 기술들"}
                   {index === 2 && "개발 생산성을 높이는 도구들"}
                 </p>
