@@ -1,15 +1,6 @@
 export default function Skills() {
   const skills = {
-    Backend: [
-      "Java",
-      "Spring",
-      "Hibernate",
-      "Next.js",
-      "TypeScript",
-      "MySQL",
-      "MariaDB",
-      "PostgreSQL",
-    ],
+    Backend: ["Java", "Spring", "Hibernate", "MySQL", "MariaDB", "PostgreSQL"],
     DevOps: [
       "Docker",
       "AWS",
