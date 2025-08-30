@@ -89,7 +89,6 @@ export default function Experience() {
       subtitle: "멋쟁이사자처럼 백엔드 인턴십 (1개월)",
       period: "2025.07 ~ 2025.08",
       description: [
-        "자사 프로젝트에 백엔드 인턴으로 참여하여 실무 협업 경험",
         "Toss 결제 연동, 구매/정산 API 구현 및 관리자 대시보드 연동",
         "프론트엔드와의 REST API 명세 협업",
         "전체 기능 기획에 따라 도메인 설계 => DB 설계 및 API 명세 작성",
