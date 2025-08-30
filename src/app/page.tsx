@@ -98,7 +98,7 @@ export default function Home() {
       {/* 콘텐츠 래퍼 */}
       <div className="flex flex-col">
         {/* 모바일에서는 HeroSide가 위에 */}
-        <div className="md:hidden bg-gradient-to-b from-slate-800 via-blue-700 to-sky-300 shadow-sm px-6 py-10">
+        <div className="md:hidden bg-gradient-to-b from-slate-100 to-gray-100 shadow-md px-6 py-10">
           <HeroSide activeSection={activeSection} />
         </div>
 
