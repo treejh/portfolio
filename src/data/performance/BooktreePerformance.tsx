@@ -46,8 +46,10 @@ Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
           </pre>
         </div>
         <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-2">
-          <li>Pageable과 Fetch Join은 충돌 위험 있으므로 EntityGraph로 대체</li>
-          <li>Post 엔티티의 연관 객체까지 한 번에 가져옴</li>
+          <li>
+            @EntityGraph로 한 번에 fetch하고, 1:N 컬렉션은 @BatchSize를 사용해
+            LAZY fetch 상태에서 묶어서 조회함으로써 N+1 문제를 최소화
+          </li>
         </ul>
       </div>
 
