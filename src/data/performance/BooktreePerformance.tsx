@@ -146,7 +146,6 @@ Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
         <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-2">
           <li>사용자 개인 key 기반 캐시 (userId + page + size)</li>
           <li>10분 TTL 적용</li>
-          <li>락 미적용 → 낮은 지연 + 낮은 충돌 가능성</li>
         </ul>
       </div>
 

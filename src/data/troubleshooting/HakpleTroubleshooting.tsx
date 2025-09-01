@@ -262,7 +262,6 @@ lock.unlock();`}
 
             <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-4">
               <li>좋아요 요청 처리 성능이 9배 이상 향상됨</li>
-              <li>동시에 요청해도 데이터 충돌 없이 안정적으로 처리 가능</li>
               <li>Redis 캐시 구조를 통해 DB 부하를 크게 줄임</li>
               <li>Redisson 락을 통해 정합성과 동시성 안전성을 확보</li>
             </ul>
