@@ -40,7 +40,7 @@ Page<Post> findLikedPostsByUser(@Param("userId") Long userId, Pageable pageable)
         </div>
         <div className="bg-gray-100 p-4 rounded mt-2">
           <pre className="text-sm text-gray-700 overflow-x-auto">
-            {`@EntityGraph(attributePaths = {"post", "post.user", "post.imageList"})
+            {`@EntityGraph(attributePaths = {"post", "post.user"})
 @Query("SELECT lp FROM LikePost lp WHERE lp.user.id = :userId")
 Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
           </pre>
