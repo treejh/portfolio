@@ -45,6 +45,13 @@ Page<Post> findLikedPostsByUser(@Param("userId") Long userId, Pageable pageable)
 Page<LikePost> findByUserId(@Param("userId") Long userId, Pageable pageable);`}
           </pre>
         </div>
+        <div className="bg-gray-100 p-4 rounded mt-2">
+          <pre className="text-sm text-gray-700 overflow-x-auto">
+            {`@OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY,orphanRemoval = true)
+@BatchSize(size = 10)
+List<Image> imageList = new ArrayList<>();`}
+          </pre>
+        </div>
         <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 mt-2">
           <li>
             @EntityGraph로 한 번에 fetch하고, 1:N 컬렉션은 @BatchSize를 사용해
