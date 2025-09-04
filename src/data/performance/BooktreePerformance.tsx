@@ -184,6 +184,20 @@ List<Image> imageList = new ArrayList<>();`}
             <tbody>
               <tr>
                 <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
+                  최대 응답 시간
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
+                  59.99s
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
+                  22.26s
+                </td>
+                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
+                  ▼ 62.9% 단축 (개선 예정)
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
                   평균 응답 시간
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
@@ -196,7 +210,7 @@ List<Image> imageList = new ArrayList<>();`}
                   ▼ 99.0% 단축
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
                   P95 응답 시간
                 </td>
@@ -207,40 +221,13 @@ List<Image> imageList = new ArrayList<>();`}
                   998.57ms
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
-                  ▼ 98.0% 단축
+                  ▼ 98.1 단축
                 </td>
-              </tr>
+              </tr> */}
+
               <tr>
                 <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
-                  성공 응답률
-                </td>
-                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
-                  30.3% (248/818)
-                </td>
-                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
-                  100% (28,386/28,386)
-                </td>
-                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
-                  ▲ 230% ↑ 향상
-                </td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
-                  실패율
-                </td>
-                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
-                  69.7%
-                </td>
-                <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700 font-bold">
-                  0%
-                </td>
-                <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
-                  ▼ 100% 개선
-                </td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
-                  처리량 (TPS)
+                  처리량 (RPS)
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-gray-700">
                   5.08 req/sec
@@ -249,10 +236,10 @@ List<Image> imageList = new ArrayList<>();`}
                   276.17 req/sec
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
-                  ▲ 약 53.3배 향상
+                  ▲ 약 54.36배 향상
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td className="px-4 py-2 border-b border-gray-200 text-gray-700 font-semibold">
                   평균 요청 처리 시간
                 </td>
@@ -277,7 +264,7 @@ List<Image> imageList = new ArrayList<>();`}
                 <td className="px-4 py-2 text-center text-green-600 font-bold">
                   ▼ 62.9% 단축
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>
