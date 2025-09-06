@@ -413,7 +413,7 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
                     <td className="px-4 py-3 text-sm text-gray-700 text-center">
                       5.98s
                     </td>
-                    <td className="px-4 py-3 text-sm text-green-600 text-center">
+                    <td className="px-4 py-3 text-sm text-green-600 font-semibold text-center">
                       ▼ 3배 단축
                     </td>
                   </tr>
@@ -442,7 +442,7 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
                     <td className="px-4 py-3 text-sm text-gray-700 text-center">
                       63.4 req/s
                     </td>
-                    <td className="px-4 py-3 text-sm text-green-600 text-center">
+                    <td className="px-4 py-3 text-sm text-green-600 font-semibold text-center">
                       ▲ 3.45배 향상
                     </td>
                   </tr>
@@ -537,11 +537,14 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
           📊 효과 요약
         </h4>
         <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-          <li>캐시 우선 구조로 조회 응답 속도 획기적 개선</li>
-          <li>Redisson 기반 분산 락 적용으로 동시성 문제 해결</li>
+          <li>캐시 우선 구조로 조회 응답 속도 개선</li>
+          <li>
+            TTL + Redisson 기반 분산 락+ 캐시 저장 조합은 대량 요청 환경에서도
+            안정적인 성능을 확보하는 핵심 전략
+          </li>
           <li>AOP 기반 락 적용으로 재사용성 및 유지보수성 향상</li>
           <li>
-            평균 응답 시간 66% 단축, 요청 실패율 0% 달성, 처리량 2.4배 증가
+            평균 응답 시간 3배 단축, 요청 실패율 0% 달성, 처리량 3.45배 증가
           </li>
         </ul>
       </div>
@@ -553,37 +556,39 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
         </h3>
         <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700 mb-3">
           <li>
-            <span className="font-semibold text-blue-900">
-              실시간성이 중요한 서비스에서는 단순 조회 API도 서비스 전체의
-              병목점이 될 수 있음
+            <span>
+              이번 개선을 통해, 불필요한 DB 접근을 막고 캐시 기반의 안전한 병렬
+              처리를 구현하는 것이 얼마나 중요한지 실감했습니다.
             </span>
           </li>
           <li>
-            <span className="font-semibold text-blue-900">
-              TTL + 분산 락 + 캐시 저장 조합은 대량 요청 환경에서도 안정적인
-              성능을 확보하는 핵심 전략
+            <span>
+              실시간 모니터링과 자동화된 테스트 환경 덕분에, 개선 효과를
+              명확하게 수치로 검증하고 운영 신뢰성을 크게 높일 수 있었습니다.
             </span>
           </li>
-          <li>
+          {/* <li>
             락 처리, 캐시 접근, 예외 대응 등의 공통 로직을{" "}
             <span className="font-mono font-semibold">@AOP</span>로 추상화하여
             코드 재사용성과 유지보수성 강화
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <span className="font-semibold text-blue-700">
               k6 + Prometheus + Grafana
             </span>
             를 통한 실시간 부하 테스트 및 모니터링으로 개선 효과를 수치로
             검증하고 운영 신뢰도 향상
-          </li>
+          </li> */}
         </ul>
-        <p className="text-sm text-gray-700">
-          이번 개선을 통해, 불필요한 DB 접근을 막고 캐시 기반의 안전한 병렬
-          처리를 구현하는 것이 얼마나 중요한지 실감했습니다.
-          <br />
-          실시간 모니터링과 자동화된 테스트 환경 덕분에, 개선 효과를 명확하게
-          수치로 검증하고 운영 신뢰성을 크게 높일 수 있었습니다.
-        </p>
+      </div>
+      <div className="mt-4">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center px-2 md:px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded-md text-blue-700 transition-colors text-sm"
+        >
+          RPS(Requests Per Second) = 기본적으로 전체 요청 수 ÷ 전체 측정 시간
+        </a>
       </div>
     </div>
   );

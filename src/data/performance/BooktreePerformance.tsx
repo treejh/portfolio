@@ -207,7 +207,7 @@ List<Image> imageList = new ArrayList<>();`}
                   376ms
                 </td>
                 <td className="px-4 py-2 border-b border-gray-200 text-center text-green-600 font-bold">
-                  ▼ 99.0% 단축
+                  ▼ 약 99배 단축
                 </td>
               </tr>
               {/* <tr>
@@ -302,12 +302,16 @@ List<Image> imageList = new ArrayList<>();`}
           </li>
           <li>
             <span className="font-medium">Redisson 캐싱</span>으로 평균 응답
-            시간 <span className="text-green-700 font-semibold">84% 단축</span>
+            시간{" "}
+            <span className="text-green-700 font-semibold">약 99배 단축</span>
           </li>
           <li>
-            TPS(처리량){" "}
-            <span className="text-green-700 font-semibold">27% 향상</span> 및
-            오류율 <span className="text-green-700 font-semibold">0%</span> 유지
+            RPS(처리량){" "}
+            <span className="text-green-700 font-semibold">
+              약 54.36 배 향상{" "}
+            </span>{" "}
+            및 오류율 <span className="text-green-700 font-semibold">0%</span>{" "}
+            유지
           </li>
           <li>
             사용자 전용 데이터는 락 없는 캐시 전략으로 충분히 안전하며, 빠름
@@ -330,6 +334,15 @@ List<Image> imageList = new ArrayList<>();`}
             중요하다는 걸 실무에서 체감했습니다.
           </li>
         </ul>
+      </div>
+      <div className="mt-4">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center px-2 md:px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded-md text-blue-700 transition-colors text-sm"
+        >
+          RPS(Requests Per Second) = 기본적으로 전체 요청 수 ÷ 전체 측정 시간
+        </a>
       </div>
     </div>
   );
