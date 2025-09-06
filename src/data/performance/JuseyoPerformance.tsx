@@ -413,7 +413,7 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
                     <td className="px-4 py-3 text-sm text-gray-700 text-center">
                       5.98s
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-700 text-center">
+                    <td className="px-4 py-3 text-sm text-green-600 text-center">
                       ▼ 3배 단축
                     </td>
                   </tr>
@@ -442,8 +442,8 @@ public Page<ChatResponseDto> getChatMessageWithLock(...) {
                     <td className="px-4 py-3 text-sm text-gray-700 text-center">
                       63.4 req/s
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-700 text-center">
-                      ▲ 244.6% 향상
+                    <td className="px-4 py-3 text-sm text-green-600 text-center">
+                      ▲ 3.45배 향상
                     </td>
                   </tr>
                 </tbody>
