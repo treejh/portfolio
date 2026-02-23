@@ -96,7 +96,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
       </nav>
 
       <div className="mt-auto pt-4 border-t border-white/20 mx-4">
-        <p className="text-xs text-blue-800 mt-2 text-center">© 2025 장지현</p>
+        <p className="text-xs text-blue-800 mt-2 text-center">© 2026 장지현</p>
       </div>
     </div>
   );
