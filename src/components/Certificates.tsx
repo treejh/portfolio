@@ -42,6 +42,27 @@ export default function Certificates() {
         </svg>
       ),
     },
+        {
+      title: "리눅스마스터2급",
+      issuer: "정보통신기술자격검정위원회",
+      date: "2026.01",
+      description: "리눅스 시스템 관리 및 운영 능력 인증",
+      icon: (
+        <svg
+          className="w-6 h-6 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 9l3 3-3 3M21 6v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2z"
+          />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -71,7 +92,9 @@ export default function Certificates() {
                   className={`p-3 rounded-xl mr-4 ${
                     idx === 0
                       ? "bg-gradient-to-r from-blue-500 to-blue-600"
-                      : "bg-gradient-to-r from-indigo-500 to-purple-600"
+                      : idx === 1
+                      ? "bg-gradient-to-r from-indigo-500 to-purple-600"
+                      : "bg-gradient-to-r from-green-500 to-emerald-600"
                   }`}
                 >
                   {cert.icon}
