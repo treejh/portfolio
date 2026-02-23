@@ -109,6 +109,32 @@ export default function Experience() {
         </svg>
       ),
     },
+        {
+      title: "(주)루트파인더즈",
+  subtitle: "백엔드 Developer",
+  period: "2025.09 ~ 2026.02",
+  description: [
+    "WebSocket(STOMP) 기반 실시간 윷놀이 게임 서버 설계 및 개발",
+    "프론트엔드와 REST API 명세 협업 및 인터페이스 정의",
+    "서비스 기획을 기반으로 API 문서화",
+    "실시간 매칭 및 게임 상태 동기화 로직 구현"
+  ],
+      icon: (
+        <svg
+          className="w-6 h-6 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -142,7 +168,11 @@ export default function Experience() {
                       ? "bg-gradient-to-r from-indigo-500 to-purple-600"
                       : idx === 2
                       ? "bg-gradient-to-r from-cyan-500 to-blue-600"
-                      : "bg-gradient-to-r from-purple-500 to-pink-600"
+                      : idx === 3
+                      ? "bg-gradient-to-r from-purple-500 to-pink-600"
+                      : idx === 4
+                      ? "bg-gradient-to-r from-yellow-500 to-green-600"
+                      : "bg-gradient-to-r from-green-500 to-emerald-600"
                   }`}
                 >
                   {exp.icon}
