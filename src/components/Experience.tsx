@@ -112,7 +112,7 @@ export default function Experience() {
         {
       title: "(주)루트파인더즈",
   subtitle: "백엔드 Developer",
-  period: "2025.09 ~ 2026.02",
+  period: "2025.09 ~ 재직중",
   description: [
     "WebSocket(STOMP) 기반 실시간 윷놀이 게임 서버 설계 및 개발",
     "프론트엔드와 REST API 명세 협업 및 인터페이스 정의",
