@@ -39,7 +39,7 @@ export default function HeroSide({ activeSection }: HeroSideProps) {
         <div className="w-32 h-35 rounded-full p-[4px] bg-gradient-to-b from-gray-100 via-gray-100 to-gray-100 shadow-md">
           <div className="w-full h-full rounded-full overflow-hidden bg-white">
             <Image
-              src="/images/profile2.jpg"
+              src="/images/profile.jpg"
               alt="장지현 프로필 사진"
               width={128}
               height={128}
